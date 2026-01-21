@@ -111,6 +111,7 @@ struct AddVisitView: View {
                     Spacer()
                     
                     Picker("Stadium", selection: $stadiumId) {
+                        Text("").tag("")
                         ForEach(stadiums) { stadium in
                             Text(stadium.name).tag(stadium.id)
                         }
@@ -130,6 +131,7 @@ struct AddVisitView: View {
                     Spacer()
                     
                     Picker("Home Team", selection: $homeTeamId) {
+                        Text("").tag("")
                         ForEach(teams) { team in
                             Text(team.name).tag(team.id)
                         }
@@ -149,6 +151,7 @@ struct AddVisitView: View {
                     Spacer()
                     
                     Picker("Away Team", selection: $awayTeamId) {
+                        Text("").tag("")
                         ForEach(teams) { team in
                             Text(team.name).tag(team.id)
                         }
