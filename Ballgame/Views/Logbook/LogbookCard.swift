@@ -35,14 +35,18 @@ struct LogbookCard: View {
     }
 
     private var matchupText: String {
-        "\(visit.homeTeamId) vs \(visit.awayTeamId)"
+        let homeTeam = DataManager.shared.teams.first(where: { $0.id == visit.homeTeamId })
+        let awayTeam = DataManager.shared.teams.first(where: { $0.id == visit.awayTeamId })
+        
+        return "\(homeTeam?.name ?? "Unknown Home Team") vs \(awayTeam?.name ?? "Unknown Away Team")"
     }
 
     private var stadiumText: String {
-        visit.stadiumId
+        let stadium = DataManager.shared.stadiums.first(where: { $0.id == visit.stadiumId })
+        return "\(stadium?.name ?? "Unknown Stadium")"
     }
 }
 
 #Preview {
-    LogbookCard(visit: Visit(date: Date(), stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-chc"))
+    LogbookCard(visit: Visit(date: Date(), league: .mlb, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-chc"))
 }

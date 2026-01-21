@@ -7,10 +7,20 @@
 
 import Foundation
 
+enum League: String, Codable, CaseIterable, Identifiable {
+    case mlb = "MLB"
+    case nfl = "NFL"
+
+    var id: String { rawValue }
+    var displayName: String { rawValue }
+}
+
 struct Team: Codable, Hashable, Identifiable {
     let id: String
     let name: String
+    let teamCode: String?
+    let teamName: String?
     let city: String?
-    let league: String?
+    let league: League
     let stadiumId: String?
 }

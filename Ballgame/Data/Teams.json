@@ -1,35 +1,45 @@
 [
   {
     "id": "mlb-bos",
-    "name": "Red Sox",
+    "name": "Boston Red Sox",
+    "teamCode": "bos",
+    "teamName": "Red Sox",
     "city": "Boston",
     "league": "MLB",
     "stadiumId": "mlb-fenway-park"
   },
   {
     "id": "mlb-chc",
-    "name": "Cubs",
+    "name": "Chicago Cubs",
+    "teamCode": "chc",
+    "teamName": "Cubs",
     "city": "Chicago",
     "league": "MLB",
     "stadiumId": "mlb-wrigley-field"
   },
   {
     "id": "mlb-tex",
-    "name": "Rangers",
+    "name": "Texas Rangers",
+    "teamCode": "tex",
+    "teamName": "Texas Rangers",
     "city": "Arlington",
     "league": "MLB",
     "stadiumId": "mlb-globe-life-field"
   },
   {
     "id": "nfl-gb",
-    "name": "Packers",
+    "name": "Green Bay Packers",
+    "teamCode": "gb",
+    "teamName": "Packers",
     "city": "Green Bay",
     "league": "NFL",
     "stadiumId": "nfl-lambeau-field"
   },
   {
     "id": "nfl-chi",
-    "name": "Bears",
+    "name": "Chicago Bears",
+    "teamCode": "chi",
+    "teamName": "Bears",
     "city": "Chicago",
     "league": "NFL",
     "stadiumId": "nfl-soldier-field"
