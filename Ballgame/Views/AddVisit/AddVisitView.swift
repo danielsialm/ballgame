@@ -11,6 +11,8 @@ import SwiftData
 struct AddVisitView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    private let dataManager = DataManager.shared
+    @State private var league: League = .mlb
     @State private var date = Date()
     @State private var stadiumId = ""
     @State private var homeTeamId = ""
@@ -73,32 +75,81 @@ struct AddVisitView: View {
     // MARK: Visit Info
     
     private var gameInfo: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        let teams = dataManager.teams.filter { $0.league == league }
+        let stadiums = dataManager.stadiums.filter { $0.league == league }
+
+        return VStack(alignment: .leading, spacing: 2) {
             Text("Game")
                 .font(.custom("AvenirNext-DemiBold", size: 20))
                 .padding(.leading, 5)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 10) {
+                Picker("League", selection: $league) {
+                    ForEach(League.allCases) { league in
+                        Text(league.displayName).tag(league)
+                    }
+                }
+                .font(.custom("AvenirNext-Regular", size: 16))
+                .pickerStyle(.segmented)
+                
+                Divider()
+                
                 DatePicker("Date", selection: $date, displayedComponents: .date)
                     .font(.custom("AvenirNext-Regular", size: 16))
                 
                 Divider()
                 
-                TextField("Stadium", text: $stadiumId)
-                    .autocorrectionDisabled()
+                HStack {
+                    Text("Stadium")
+                        .font(.custom("AvenirNext-Regular", size: 16))
+                    
+                    Spacer()
+                    
+                    Picker("Stadium", selection: $stadiumId) {
+                        ForEach(stadiums) { stadium in
+                            Text(stadium.name).tag(stadium.id)
+                        }
+                    }
                     .font(.custom("AvenirNext-Regular", size: 16))
+                    .pickerStyle(.menu)
+                    .labelsHidden()
+                }
                 
                 Divider()
                 
-                TextField("Home Team", text: $homeTeamId)
-                    .autocorrectionDisabled()
+                HStack {
+                    Text("Home Team")
+                        .font(.custom("AvenirNext-Regular", size: 16))
+                    
+                    Spacer()
+                    
+                    Picker("Home Team", selection: $homeTeamId) {
+                        ForEach(teams) { team in
+                            Text(team.name).tag(team.id)
+                        }
+                    }
                     .font(.custom("AvenirNext-Regular", size: 16))
+                    .pickerStyle(.menu)
+                    .labelsHidden()
+                }
                 
                 Divider()
                 
-                TextField("Away Team", text: $awayTeamId)
-                    .autocorrectionDisabled()
+                HStack {
+                    Text("Away Team")
+                        .font(.custom("AvenirNext-Regular", size: 16))
+                    
+                    Spacer()
+                    
+                    Picker("Away Team", selection: $awayTeamId) {
+                        ForEach(teams) { team in
+                            Text(team.name).tag(team.id)
+                        }
+                    }
                     .font(.custom("AvenirNext-Regular", size: 16))
+                    .pickerStyle(.menu)
+                    .labelsHidden()
+                }
             }
             .padding(16)
             .background(.white)

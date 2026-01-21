@@ -89,6 +89,7 @@ private struct RootTabView: View {
         }
         .sheet(isPresented: $isAddSheetPresented) {
             AddVisitView()
+                .padding(.top, 20)
                 .padding(.bottom, 20)
                 .background(
                     // Measures the rendered height of AddVisitView and publishes it
@@ -106,7 +107,7 @@ private struct RootTabView: View {
     }
     
     private struct ViewHeightKey: PreferenceKey {
-        static var defaultValue: CGFloat = 0
+        static var defaultValue: CGFloat = 500
 
         static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
             value = nextValue()
