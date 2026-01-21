@@ -10,6 +10,7 @@ import SwiftData
 
 struct AddVisitView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     @State private var date = Date()
     @State private var stadiumId = ""
     @State private var homeTeamId = ""
@@ -24,8 +25,7 @@ struct AddVisitView: View {
             detailInfo
         }
         .padding(.horizontal, 20)
-        .padding(.top, 20)
-        .frame(maxHeight: .infinity, alignment: .top)
+        .padding(.bottom, 20)
     }
     
     // MARK: Header
@@ -36,7 +36,13 @@ struct AddVisitView: View {
                 .font(.custom("AvenirNext-Heavy", size: 36))
 
             HStack {
+                Button("Cancel") {
+                    dismiss()
+                }
+                .font(.custom("AvenirNext-DemiBold", size: 20))
+
                 Spacer()
+
                 Button("Save") {
                     saveVisit()
                 }
@@ -62,6 +68,7 @@ struct AddVisitView: View {
             seat: seat.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : seat
         )
         modelContext.insert(visit)
+        dismiss()
     }
     
     // MARK: Visit Info

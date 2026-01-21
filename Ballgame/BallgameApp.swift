@@ -25,33 +25,67 @@ struct BallgameApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                LogbookView()
-                    .tabItem {
-                        Label("Logbook", systemImage: "book.closed")
-                    }
-
-                StadiumsView()
-                    .tabItem {
-                        Label("Stadiums", systemImage: "building.columns")
-                    }
-
-                AddVisitView()
-                    .tabItem {
-                        Label("Add", systemImage: "plus.circle.fill")
-                    }
-
-                FriendsView()
-                    .tabItem {
-                        Label("Friends", systemImage: "person.2.fill")
-                    }
-
-                AccountView()
-                    .tabItem {
-                        Label("Account", systemImage: "person.crop.circle")
-                    }
-            }
+            RootTabView()
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+private enum Tab: Hashable {
+    case logbook
+    case stadiums
+    case add
+    case friends
+    case account
+}
+
+private struct RootTabView: View {
+    @State private var selection: Tab = .logbook
+    @State private var lastNonAddSelection: Tab = .logbook
+    @State private var isAddSheetPresented = false
+
+    var body: some View {
+        TabView(selection: $selection) {
+            LogbookView()
+                .tabItem {
+                    Label("Logbook", systemImage: "book.closed")
+                }
+                .tag(Tab.logbook)
+
+            StadiumsView()
+                .tabItem {
+                    Label("Stadiums", systemImage: "building.columns")
+                }
+                .tag(Tab.stadiums)
+
+            Color.clear
+                .tabItem {
+                    Label("Add", systemImage: "plus.circle.fill")
+                }
+                .tag(Tab.add)
+
+            FriendsView()
+                .tabItem {
+                    Label("Friends", systemImage: "person.2.fill")
+                }
+                .tag(Tab.friends)
+
+            AccountView()
+                .tabItem {
+                    Label("Account", systemImage: "person.crop.circle")
+                }
+                .tag(Tab.account)
+        }
+        .onChange(of: selection) { _, newSelection in
+            if newSelection == .add {
+                isAddSheetPresented = true
+                selection = lastNonAddSelection
+            } else {
+                lastNonAddSelection = newSelection
+            }
+        }
+        .sheet(isPresented: $isAddSheetPresented) {
+            AddVisitView()
+        }
     }
 }
