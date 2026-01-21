@@ -116,6 +116,7 @@ struct AddVisitView: View {
                             Text(stadium.name).tag(stadium.id)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     .font(.custom("AvenirNext-Regular", size: 16))
                     .pickerStyle(.menu)
                     .labelsHidden()
@@ -136,6 +137,7 @@ struct AddVisitView: View {
                             Text(team.name).tag(team.id)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     .font(.custom("AvenirNext-Regular", size: 16))
                     .pickerStyle(.menu)
                     .labelsHidden()
@@ -156,6 +158,7 @@ struct AddVisitView: View {
                             Text(team.name).tag(team.id)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     .font(.custom("AvenirNext-Regular", size: 16))
                     .pickerStyle(.menu)
                     .labelsHidden()
