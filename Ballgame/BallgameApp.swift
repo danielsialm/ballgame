@@ -43,6 +43,8 @@ private struct RootTabView: View {
     @State private var selection: Tab = .logbook
     @State private var lastNonAddSelection: Tab = .logbook
     @State private var isAddSheetPresented = false
+    // Tracks the measured height of AddVisitView to size the sheet
+    @State private var addSheetHeight: CGFloat = 0
 
     var body: some View {
         TabView(selection: $selection) {
@@ -76,6 +78,7 @@ private struct RootTabView: View {
                 }
                 .tag(Tab.account)
         }
+        // Presents the AddVisitView as a sheet
         .onChange(of: selection) { _, newSelection in
             if newSelection == .add {
                 isAddSheetPresented = true
@@ -86,6 +89,27 @@ private struct RootTabView: View {
         }
         .sheet(isPresented: $isAddSheetPresented) {
             AddVisitView()
+                .padding(.bottom, 20)
+                .background(
+                    // Measures the rendered height of AddVisitView and publishes it
+                    GeometryReader { proxy in
+                        Color.clear
+                            .preference(key: ViewHeightKey.self, value: proxy.size.height)
+                    }
+                )
+                .onPreferenceChange(ViewHeightKey.self) { height in
+                    addSheetHeight = height
+                }
+                // Match the sheet detent to the measured content height
+                .presentationDetents([.height(addSheetHeight)])
+        }
+    }
+    
+    private struct ViewHeightKey: PreferenceKey {
+        static var defaultValue: CGFloat = 0
+
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+            value = nextValue()
         }
     }
 }

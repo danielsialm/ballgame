@@ -24,8 +24,7 @@ struct AddVisitView: View {
             gameInfo
             detailInfo
         }
-        .padding(.horizontal, 20)
-        .padding(.bottom, 20)
+        .padding(20)
     }
     
     // MARK: Header
@@ -121,7 +120,7 @@ struct AddVisitView: View {
                 Divider()
                 
                 TextField("Notes", text: $notes, axis: .vertical)
-                    .lineLimit(3...6)
+                    .lineLimit(3...3)
                     .font(.custom("AvenirNext-Regular", size: 16))
             }
             .padding(12)
