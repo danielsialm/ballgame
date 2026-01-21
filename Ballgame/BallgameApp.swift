@@ -89,28 +89,7 @@ private struct RootTabView: View {
         }
         .sheet(isPresented: $isAddSheetPresented) {
             AddVisitView()
-                .padding(.top, 20)
-                .padding(.bottom, 20)
-                .background(
-                    // Measures the rendered height of AddVisitView and publishes it
-                    GeometryReader { proxy in
-                        Color.clear
-                            .preference(key: ViewHeightKey.self, value: proxy.size.height)
-                    }
-                )
-                .onPreferenceChange(ViewHeightKey.self) { height in
-                    addSheetHeight = height
-                }
-                // Match the sheet detent to the measured content height
-                .presentationDetents([.height(addSheetHeight)])
-        }
-    }
-    
-    private struct ViewHeightKey: PreferenceKey {
-        static var defaultValue: CGFloat = 500
-
-        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-            value = nextValue()
+                .presentationDetents([.medium])
         }
     }
 }

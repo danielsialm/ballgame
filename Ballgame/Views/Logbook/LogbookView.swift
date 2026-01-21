@@ -106,9 +106,9 @@ struct LogbookView: View {
     let container = try! ModelContainer(for: Visit.self, configurations: config)
     let context = container.mainContext
 
-    context.insert(Visit(date: Date(), stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-chc"))
-    context.insert(Visit(date: Calendar.current.date(byAdding: .day, value: -28, to: Date())!, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-tex"))
-    context.insert(Visit(date: Calendar.current.date(byAdding: .day, value: -14, to: Date())!, stadiumId: "nfl-lambeau-field", homeTeamId: "nfl-gb", awayTeamId: "nfl-chi"))
+    context.insert(Visit(date: Date(), league: .mlb, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-chc"))
+    context.insert(Visit(date: Calendar.current.date(byAdding: .day, value: -28, to: Date())!, league: .mlb, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-tex"))
+    context.insert(Visit(date: Calendar.current.date(byAdding: .day, value: -14, to: Date())!, league: .nfl, stadiumId: "nfl-lambeau-field", homeTeamId: "nfl-gb", awayTeamId: "nfl-chi"))
 
     return LogbookView()
         .modelContainer(container)
