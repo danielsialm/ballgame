@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mlb-fenway-park",
+    "name": "Fenway Park",
+    "city": "Boston",
+    "state": "MA",
+    "league": "MLB",
+    "capacity": 37755
+  },
+  {
+    "id": "mlb-wrigley-field",
+    "name": "Wrigley Field",
+    "city": "Chicago",
+    "state": "IL",
+    "league": "MLB",
+    "capacity": 41649
+  },
+  {
+    "id": "mlb-globe-life-field",
+    "name": "Globe Life Field",
+    "city": "Arlington",
+    "state": "TX",
+    "league": "MLB",
+    "capacity": 40300
+  },
+  {
+    "id": "nfl-lambeau-field",
+    "name": "Lambeau Field",
+    "city": "Green Bay",
+    "state": "WI",
+    "league": "NFL",
+    "capacity": 81441
+  },
+  {
+    "id": "nfl-soldier-field",
+    "name": "Soldier Field",
+    "city": "Chicago",
+    "state": "IL",
+    "league": "NFL",
+    "capacity": 61500
+  }
+]

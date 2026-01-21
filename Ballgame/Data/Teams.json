@@ -1,0 +1,37 @@
+[
+  {
+    "id": "mlb-bos",
+    "name": "Red Sox",
+    "city": "Boston",
+    "league": "MLB",
+    "stadiumId": "mlb-fenway-park"
+  },
+  {
+    "id": "mlb-chc",
+    "name": "Cubs",
+    "city": "Chicago",
+    "league": "MLB",
+    "stadiumId": "mlb-wrigley-field"
+  },
+  {
+    "id": "mlb-tex",
+    "name": "Rangers",
+    "city": "Arlington",
+    "league": "MLB",
+    "stadiumId": "mlb-globe-life-field"
+  },
+  {
+    "id": "nfl-gb",
+    "name": "Packers",
+    "city": "Green Bay",
+    "league": "NFL",
+    "stadiumId": "nfl-lambeau-field"
+  },
+  {
+    "id": "nfl-chi",
+    "name": "Bears",
+    "city": "Chicago",
+    "league": "NFL",
+    "stadiumId": "nfl-soldier-field"
+  }
+]

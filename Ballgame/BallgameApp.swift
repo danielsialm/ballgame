@@ -12,7 +12,7 @@ import SwiftData
 struct BallgameApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Visit.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,32 @@ struct BallgameApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                LogbookView()
+                    .tabItem {
+                        Label("Logbook", systemImage: "book.closed")
+                    }
+
+                StadiumsView()
+                    .tabItem {
+                        Label("Stadiums", systemImage: "building.columns")
+                    }
+
+                AddVisitView()
+                    .tabItem {
+                        Label("Add", systemImage: "plus.circle.fill")
+                    }
+
+                FriendsView()
+                    .tabItem {
+                        Label("Friends", systemImage: "person.2.fill")
+                    }
+
+                AccountView()
+                    .tabItem {
+                        Label("Account", systemImage: "person.crop.circle")
+                    }
+            }
         }
         .modelContainer(sharedModelContainer)
     }
