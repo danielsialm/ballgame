@@ -76,7 +76,7 @@ struct LogbookView: View {
                 emptyState
             } else {
                 ForEach(visits) { visit in
-                    LogbookCard(visit: visit)
+                    VisitCard(visit: visit)
                 }
             }
         }

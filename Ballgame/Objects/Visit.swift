@@ -15,15 +15,29 @@ class Visit {
     var stadiumId: String
     var homeTeamId: String
     var awayTeamId: String
+    
+    var homePoints: UInt8?
+    var awayPoints: UInt8?
     var seat: String?
     var notes: String?
 
-    init(date: Date, league: League, stadiumId: String, homeTeamId: String, awayTeamId: String, seat: String? = nil, notes: String? = nil) {
+    init(date: Date,
+         league: League,
+         stadiumId: String,
+         homeTeamId: String,
+         awayTeamId: String,
+         homePoints: UInt8? = nil,
+         awayPoints: UInt8? = nil,
+         seat: String? = nil,
+         notes: String? = nil
+    ) {
         self.date = date
         self.league = league
         self.stadiumId = stadiumId
         self.homeTeamId = homeTeamId
         self.awayTeamId = awayTeamId
+        self.homePoints = homePoints
+        self.awayPoints = awayPoints
         self.notes = notes
         self.seat = seat
     }

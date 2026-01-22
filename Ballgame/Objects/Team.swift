@@ -23,4 +23,8 @@ struct Team: Codable, Hashable, Identifiable {
     let city: String?
     let league: League
     let stadiumId: String?
+    
+    var logoName: String {
+        "logo-\(id)"
+    }
 }
