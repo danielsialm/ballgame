@@ -18,11 +18,11 @@ enum League: String, Codable, CaseIterable, Identifiable {
 struct Team: Codable, Hashable, Identifiable {
     let id: String
     let name: String
-    let teamCode: String?
-    let teamName: String?
-    let city: String?
+    let teamCode: String
+    let teamName: String
+    let city: String
     let league: League
-    let stadiumId: String?
+    let stadiumId: String
     
     var logoName: String {
         "logo-\(id)"

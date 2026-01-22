@@ -56,9 +56,11 @@ struct VisitCard: View {
             VStack {
                 Text(points.map(String.init) ?? "-")
                     .font(.custom("AvenirNext-Heavy", size: 28))
+                    .foregroundStyle(.black)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
                 Text(team.teamName ?? "---")
                     .font(.custom("AvenirNext-Regular", size: 12))
+                    .foregroundStyle(.black)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
             }
             .padding(.leading, 70)

@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct VisitDetails: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+    @State private var showingDeleteAlert = false
+
     let visit: Visit
 
     var body: some View {
@@ -26,6 +31,7 @@ struct VisitDetails: View {
             .padding(.bottom, 28)
         }
         .background(Color(.systemGroupedBackground))
+        .navigationTitle("\(awayTeam.teamCode.uppercased()) @ \(homeTeam.teamCode.uppercased())")
     }
 
     // MARK: Header
@@ -123,8 +129,8 @@ struct VisitDetails: View {
                 detailRow(label: "Stadium", value: stadiumName)
                 detailRow(label: "League", value: visit.league.displayName)
                 detailRow(label: "Seat", value: visit.seat ?? "-")
-                detailRow(label: "Home Team", value: homeTeamName)
-                detailRow(label: "Away Team", value: awayTeamName)
+                detailRow(label: "Home Team", value: homeTeam.name)
+                detailRow(label: "Away Team", value: awayTeam.name)
             }
             .padding(16)
             .background(.white)
@@ -187,7 +193,7 @@ struct VisitDetails: View {
     
     private var deleteButton: some View {
         Button {
-            // TODO: Wire up delete flow.
+            showingDeleteAlert = true
         } label: {
             Text("Delete Visit")
                 .font(.custom("AvenirNext-DemiBold", size: 12))
@@ -197,6 +203,15 @@ struct VisitDetails: View {
                 .background(.red.opacity(0.5))
                 .cornerRadius(10)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+        }
+        .alert("Delete this visit?", isPresented: $showingDeleteAlert) {
+            Button("Delete", role: .destructive) {
+                modelContext.delete(visit)
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This action cannot be undone.")
         }
     }
 
@@ -212,12 +227,12 @@ struct VisitDetails: View {
         DataManager.shared.stadiums.first(where: { $0.id == visit.stadiumId })?.name ?? "Unknown Stadium"
     }
 
-    private var homeTeamName: String {
-        DataManager.shared.teams.first(where: { $0.id == visit.homeTeamId })?.name ?? "Unknown"
+    private var homeTeam: Team {
+        DataManager.shared.teams.first(where: { $0.id == visit.homeTeamId })!
     }
 
-    private var awayTeamName: String {
-        DataManager.shared.teams.first(where: { $0.id == visit.awayTeamId })?.name ?? "Unknown"
+    private var awayTeam: Team {
+        DataManager.shared.teams.first(where: { $0.id == visit.awayTeamId })!
     }
 }
 
