@@ -19,6 +19,7 @@ struct VisitDetails: View {
                 photosCard
                 detailsCard
                 notesCard
+                actions
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
@@ -78,23 +79,9 @@ struct VisitDetails: View {
                             .background(.white)
                             .cornerRadius(10)
                     }
-
-                    addChip
                 }
             }
         }
-    }
-
-    private var addChip: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "plus")
-            Text("Add")
-        }
-        .font(.custom("AvenirNext-DemiBold", size: 12))
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .background(Color.gray.opacity(0.1))
-        .cornerRadius(16)
     }
 
     // MARK: Photos
@@ -168,6 +155,46 @@ struct VisitDetails: View {
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.white)
+                .cornerRadius(10)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+        }
+    }
+
+    // MARK: Actions
+    
+    private var actions: some View {
+        VStack {
+            editButton
+            deleteButton
+        }
+        .padding(.top, 25)
+    }
+
+    private var editButton: some View {
+        Button {
+            // TODO: Wire up edit flow.
+        } label: {
+            Text("Edit Visit")
+                .font(.custom("AvenirNext-DemiBold", size: 12))
+                .padding(5)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .background(.blue.opacity(0.5))
+                .cornerRadius(10)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+        }
+    }
+    
+    private var deleteButton: some View {
+        Button {
+            // TODO: Wire up delete flow.
+        } label: {
+            Text("Delete Visit")
+                .font(.custom("AvenirNext-DemiBold", size: 12))
+                .padding(5)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .background(.red.opacity(0.5))
                 .cornerRadius(10)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
