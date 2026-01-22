@@ -12,6 +12,7 @@ struct VisitDetails: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var showingDeleteAlert = false
+    @State private var showingEditSheet = false
 
     let visit: Visit
 
@@ -31,6 +32,11 @@ struct VisitDetails: View {
             .padding(.bottom, 28)
         }
         .background(Color(.systemGroupedBackground))
+        .sheet(isPresented: $showingEditSheet) {
+            NavigationStack {
+                EditVisitView(visit: visit)
+            }
+        }
         .navigationTitle("\(awayTeam.teamCode.uppercased()) @ \(homeTeam.teamCode.uppercased())")
     }
 
@@ -178,7 +184,7 @@ struct VisitDetails: View {
 
     private var editButton: some View {
         Button {
-            // TODO: Wire up edit flow.
+            showingEditSheet = true
         } label: {
             Text("Edit Visit")
                 .font(.custom("AvenirNext-DemiBold", size: 12))

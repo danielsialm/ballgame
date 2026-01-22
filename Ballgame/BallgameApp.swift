@@ -90,8 +90,10 @@ private struct RootTabView: View {
             }
         }
         .sheet(isPresented: $isAddSheetPresented) {
-            AddVisitView()
-                .presentationDetents([.medium])
+            NavigationStack {
+                AddVisitView()
+                    .presentationDetents([.medium])
+            }
         }
     }
 }
