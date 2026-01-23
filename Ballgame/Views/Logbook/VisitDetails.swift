@@ -211,14 +211,16 @@ struct VisitDetails: View {
     private var notesCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionTitle("Notes")
-
-            Text(visit.notes ?? "")
-                .font(.custom("AvenirNext-Regular", size: 14))
-                .padding(16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.white)
-                .cornerRadius(10)
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+            ScrollView {
+                Text(visit.notes ?? "")
+                    .font(.custom("AvenirNext-Regular", size: 14))
+                    .padding(16)
+            }
+            .frame(height: 100)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(.white)
+            .cornerRadius(10)
+            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
 
@@ -238,7 +240,7 @@ struct VisitDetails: View {
         } label: {
             Text("Edit Visit")
                 .font(.custom("AvenirNext-DemiBold", size: 12))
-                .padding(5)
+                .padding(.vertical, 15)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .background(.blue.opacity(0.5))
@@ -253,7 +255,7 @@ struct VisitDetails: View {
         } label: {
             Text("Delete Visit")
                 .font(.custom("AvenirNext-DemiBold", size: 12))
-                .padding(5)
+                .padding(.vertical, 15)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .background(.red.opacity(0.5))
@@ -320,7 +322,7 @@ struct VisitDetails: View {
             homePoints: 8,
             awayPoints: 3,
             seat: "Section 125, Row 3, Seat 7",
-            notes: "Ohtani SP",
+            notes: "This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. ",
             companions: ["Kat", "Trent", "Kyzer"]
         )
     )
