@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct VisitDetails: View {
     @Environment(\.modelContext) private var modelContext
@@ -15,6 +16,12 @@ struct VisitDetails: View {
     @State private var showingEditSheet = false
 
     let visit: Visit
+    private let coordinates: CLLocationCoordinate2D?
+    
+    init(visit: Visit) {
+        self.visit = visit
+        self.coordinates = VisitDetails.getStadiumCoordinates(id: visit.stadiumId)
+    }
 
     var body: some View {
         ScrollView {
@@ -37,7 +44,7 @@ struct VisitDetails: View {
                 EditVisitView(visit: visit)
             }
         }
-        .navigationTitle("\(awayTeam.teamCode.uppercased()) @ \(homeTeam.teamCode.uppercased())")
+        .navigationTitle("\(awayTeam?.teamCode.uppercased() ?? "-") @ \(homeTeam?.teamCode.uppercased() ?? "-")")
     }
 
     // MARK: Header
@@ -47,32 +54,57 @@ struct VisitDetails: View {
     }
 
     // MARK: Map
+    
+    private static func getStadiumCoordinates(id: String) -> CLLocationCoordinate2D? {
+        guard let stadium = DataManager.shared.stadiums.first(where: { $0.id == id }),
+              let latitude = stadium.latitude,
+              let longitude = stadium.longitude else {
+            return nil
+        }
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
 
     private var mapCard: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [Color.green.opacity(0.35), Color.blue.opacity(0.35)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+        Group {
+            if let coordinates = coordinates {
+                Map(initialPosition: .region(
+                    MKCoordinateRegion(
+                        center: coordinates,
+                        span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+                )) {
+                    Marker(stadiumName, coordinate: coordinates)
+                }
+                .mapStyle(.imagery)
+                .frame(height: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+            } else {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [Color.green.opacity(0.35), Color.blue.opacity(0.35)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
 
-            VStack(spacing: 6) {
-                Image(systemName: "map.fill")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(.white)
-                Text("Map placeholder")
-                    .font(.custom("AvenirNext-DemiBold", size: 14))
-                    .foregroundStyle(.white)
-                Text(stadiumName)
-                    .font(.custom("AvenirNext-Regular", size: 12))
-                    .foregroundStyle(.white.opacity(0.9))
+                    VStack(spacing: 6) {
+                        Image(systemName: "map.fill")
+                            .font(.system(size: 28, weight: .bold))
+                            .foregroundStyle(.white)
+                        Text("Map unavailable")
+                            .font(.custom("AvenirNext-DemiBold", size: 14))
+                            .foregroundStyle(.white)
+                        Text(stadiumName)
+                            .font(.custom("AvenirNext-Regular", size: 12))
+                            .foregroundStyle(.white.opacity(0.9))
+                    }
+                }
+                .frame(height: 160)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
             }
         }
-        .frame(height: 160)
-        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
 
     // MARK: Companions
@@ -135,8 +167,8 @@ struct VisitDetails: View {
                 detailRow(label: "Stadium", value: stadiumName)
                 detailRow(label: "League", value: visit.league.displayName)
                 detailRow(label: "Seat", value: visit.seat ?? "-")
-                detailRow(label: "Home Team", value: homeTeam.name)
-                detailRow(label: "Away Team", value: awayTeam.name)
+                detailRow(label: "Home Team", value: homeTeam?.name ?? "-")
+                detailRow(label: "Away Team", value: awayTeam?.name ?? "-")
             }
             .padding(16)
             .background(.white)
@@ -233,12 +265,12 @@ struct VisitDetails: View {
         DataManager.shared.stadiums.first(where: { $0.id == visit.stadiumId })?.name ?? "Unknown Stadium"
     }
 
-    private var homeTeam: Team {
-        DataManager.shared.teams.first(where: { $0.id == visit.homeTeamId })!
+    private var homeTeam: Team? {
+        DataManager.shared.teams.first(where: { $0.id == visit.homeTeamId })
     }
 
-    private var awayTeam: Team {
-        DataManager.shared.teams.first(where: { $0.id == visit.awayTeamId })!
+    private var awayTeam: Team? {
+        DataManager.shared.teams.first(where: { $0.id == visit.awayTeamId })
     }
 }
 
@@ -264,9 +296,9 @@ struct VisitDetails: View {
         visit: Visit(
             date: Date(),
             league: .mlb,
-            stadiumId: "mlb-fenway-park",
-            homeTeamId: "mlb-bos",
-            awayTeamId: "mlb-chc"
+            stadiumId: "mlb-no-park",
+            homeTeamId: "mlb-home",
+            awayTeamId: "mlb-away"
         )
     )
 }

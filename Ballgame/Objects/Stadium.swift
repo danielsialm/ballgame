@@ -12,6 +12,8 @@ struct Stadium: Codable, Hashable, Identifiable {
     let name: String
     let city: String?
     let state: String?
+    let latitude: Double?
+    let longitude: Double?
     // TODO: This might be better to implement as "sports"
     let league: League?
     let capacity: Int?

@@ -40,25 +40,27 @@ struct VisitCard: View {
     }
 
     private func teamCard(teamId: String, points: UInt8?, isAway: Bool = false) -> some View {
-        let team = DataManager.shared.teams.first(where: { $0.id == teamId })!
+        let team = DataManager.shared.teams.first(where: { $0.id == teamId })
         
         return ZStack(alignment: .center) {
-            HStack {
-                Image(team.logoName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                    .padding(.leading, 15)
-                    .padding(.trailing, 15)
-                    .scaleEffect(x: isAway ? -1 : 1, y: 1)
-                Spacer()
+            if let logoName = team?.logoName {
+                HStack {
+                    Image(logoName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .padding(.leading, 15)
+                        .padding(.trailing, 15)
+                        .scaleEffect(x: isAway ? -1 : 1, y: 1)
+                    Spacer()
+                }
             }
             VStack {
                 Text(points.map(String.init) ?? "-")
                     .font(.custom("AvenirNext-Heavy", size: 28))
                     .foregroundStyle(.black)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
-                Text(team.teamName ?? "---")
+                Text(team?.teamName ?? "---")
                     .font(.custom("AvenirNext-Regular", size: 12))
                     .foregroundStyle(.black)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)

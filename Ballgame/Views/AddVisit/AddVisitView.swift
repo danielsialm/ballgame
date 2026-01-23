@@ -20,12 +20,10 @@ struct AddVisitView: View {
     @State private var seat = ""
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: 24) {
-                gameInfo
-            }
-            .padding(20)
+        VStack(alignment: .center, spacing: 24) {
+            gameInfo
         }
+        .padding(20)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
