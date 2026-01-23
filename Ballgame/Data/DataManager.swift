@@ -44,7 +44,7 @@ class DataManager {
             let data = try Data(contentsOf: url)
             stadiums = try JSONDecoder().decode([Stadium].self, from: data)
         } catch {
-            assertionFailure("Failed to load Teams.json: \(error)")
+            assertionFailure("Failed to load Stadiums.json: \(error)")
             stadiums = []
         }
     }

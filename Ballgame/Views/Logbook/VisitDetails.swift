@@ -14,6 +14,8 @@ struct VisitDetails: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showingDeleteAlert = false
     @State private var showingEditSheet = false
+    
+    @State private var item: MKMapItem?
 
     let visit: Visit
     private let coordinates: CLLocationCoordinate2D?
@@ -63,46 +65,62 @@ struct VisitDetails: View {
         }
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
+    private static func getPlaceId(id: String) -> String? {
+        guard let stadium = DataManager.shared.stadiums.first(where: { $0.id == id }),
+              let placeId = stadium.placeId else {
+            return nil
+        }
+        return placeId
+    }
 
     private var mapCard: some View {
         Group {
-            if let coordinates = coordinates {
+            if let item {
                 Map(initialPosition: .region(
                     MKCoordinateRegion(
-                        center: coordinates,
-                        span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+                        center: item.location.coordinate,
+                        span: MKCoordinateSpan(latitudeDelta: 0.0035, longitudeDelta: 0.0035))
                 )) {
-                    Marker(stadiumName, coordinate: coordinates)
+                    Marker(item: item)
                 }
-                .mapStyle(.imagery)
-                .frame(height: 180)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+                .mapStyle(.standard(elevation: .realistic))
+                
             } else {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.green.opacity(0.35), Color.blue.opacity(0.35)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                emptyMap
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .frame(height: 250)
+        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+        .task {
+            guard let placeId = VisitDetails.getPlaceId(id: visit.stadiumId),
+                  let identifier = MKMapItem.Identifier(rawValue: placeId) else {
+                return
+            }
+            let request = MKMapItemRequest(mapItemIdentifier: identifier)
+            item = try? await request.mapItem
+        }
+    }
+    
+    private var emptyMap: some View {
+        ZStack {
+            LinearGradient(
+                colors: [Color.green.opacity(0.35), Color.blue.opacity(0.35)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
 
-                    VStack(spacing: 6) {
-                        Image(systemName: "map.fill")
-                            .font(.system(size: 28, weight: .bold))
-                            .foregroundStyle(.white)
-                        Text("Map unavailable")
-                            .font(.custom("AvenirNext-DemiBold", size: 14))
-                            .foregroundStyle(.white)
-                        Text(stadiumName)
-                            .font(.custom("AvenirNext-Regular", size: 12))
-                            .foregroundStyle(.white.opacity(0.9))
-                    }
-                }
-                .frame(height: 160)
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+            VStack(spacing: 6) {
+                Image(systemName: "map.fill")
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundStyle(.white)
+                Text("Map unavailable")
+                    .font(.custom("AvenirNext-DemiBold", size: 14))
+                    .foregroundStyle(.white)
+                Text(stadiumName)
+                    .font(.custom("AvenirNext-Regular", size: 12))
+                    .foregroundStyle(.white.opacity(0.9))
             }
         }
     }
@@ -274,24 +292,41 @@ struct VisitDetails: View {
     }
 }
 
-#Preview {
+#Preview("Visit_NFL") {
     VisitDetails(
         visit: Visit(
-            date: Date(),
+            date: Date(timeIntervalSince1970: 1762084800),
+            league: .nfl,
+            stadiumId: "nfl-highmark-stadium",
+            homeTeamId: "nfl-buf",
+            awayTeamId: "nfl-kc",
+            homePoints: 28,
+            awayPoints: 21,
+            seat: "Section 133, Row 20, Seat 4",
+            notes: "Go Bills!",
+            companions: ["Kat"]
+        )
+    )
+}
+
+#Preview("Visit_MLB") {
+    VisitDetails(
+        visit: Visit(
+            date: Date(timeIntervalSince1970: 1755691200),
             league: .mlb,
-            stadiumId: "mlb-fenway-park",
-            homeTeamId: "mlb-bos",
-            awayTeamId: "mlb-chc",
-            homePoints: 6,
+            stadiumId: "mlb-coors-field",
+            homeTeamId: "mlb-col",
+            awayTeamId: "mlb-lad",
+            homePoints: 8,
             awayPoints: 3,
-            seat: "Loge Box 105, Row A",
-            notes: "Great weather, packed crowd, and an extra-inning finish.",
+            seat: "Section 125, Row 3, Seat 7",
+            notes: "Ohtani SP",
             companions: ["Kat", "Trent", "Kyzer"]
         )
     )
 }
 
-#Preview("Min") {
+#Preview("Visit_Empty") {
     VisitDetails(
         visit: Visit(
             date: Date(),
