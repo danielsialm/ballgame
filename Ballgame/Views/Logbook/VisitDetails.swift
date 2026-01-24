@@ -30,10 +30,16 @@ struct VisitDetails: View {
             VStack(alignment: .leading, spacing: 18) {
                 header
                 mapCard
-                companionsCard
-                photosCard
+                if !visit.companions.isEmpty {
+                    companionsCard
+                }
+                if !visit.photos.isEmpty {
+                    photosCard
+                }
                 detailsCard
-                notesCard
+                if visit.notes != nil {
+                    notesCard
+                }
                 actions
             }
             .padding(.horizontal, 20)
@@ -151,27 +157,41 @@ struct VisitDetails: View {
     private var photosCard: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionTitle("Photos")
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(0..<3, id: \.self) { index in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(Color.white)
-
-                            VStack(spacing: 8) {
-                                Image(systemName: "photo")
-                                    .font(.system(size: 22, weight: .semibold))
-                                    .foregroundStyle(.gray)
-                                Text(index == 0 ? "Add photos" : "Placeholder")
-                                    .font(.custom("AvenirNext-DemiBold", size: 11))
-                                    .foregroundStyle(.gray)
-                            }
+                    ForEach(visit.photos, id: \.self) { data in
+                        if let image = UIImage(data: data) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                            
+                        } else {
+                            missingPhoto
                         }
-                        .frame(width: 120, height: 90)
                     }
+                    .frame(width: 120, height: 90)
+                    .cornerRadius(10)
                 }
             }
+        }
+    }
+    
+    private var missingPhoto: some View {
+        ZStack {
+            Color.white
+            
+            VStack(spacing: 8) {
+                Image(systemName: "photo.trianglebadge.exclamationmark")
+                    .font(.system(size: 30, weight: .semibold))
+                    .foregroundStyle(.gray)
+                
+                Text("Error Loading Photo")
+                    .font(.custom("AvenirNext-DemiBold", size: 11))
+                    .foregroundStyle(.gray)
+            }
+
         }
     }
 

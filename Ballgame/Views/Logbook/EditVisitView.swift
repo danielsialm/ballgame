@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 struct EditVisitView: View {
     @Environment(\.dismiss) private var dismiss
@@ -21,6 +22,8 @@ struct EditVisitView: View {
     @State private var notesText: String
     @State private var companions: [String]
     @State private var newCompanionName: String
+    @State private var photoPickerItems: [PhotosPickerItem]
+    @State private var isLoadingPhotos = false
 
     init(visit: Visit) {
         self._visit = Bindable(wrappedValue: visit)
@@ -30,6 +33,7 @@ struct EditVisitView: View {
         self._notesText = State(initialValue: visit.notes ?? "")
         self._companions = State(initialValue: visit.companions)
         self._newCompanionName = State(initialValue: "")
+        self._photoPickerItems = State(initialValue: [])
     }
 
     var body: some View {
@@ -47,12 +51,6 @@ struct EditVisitView: View {
                 }
                 .padding(.horizontal, 10)
             }
-
-            Section("Seat") {
-                TextField("Seat", text: $seatText)
-                    .font(.custom("AvenirNext-Regular", size: 16))
-            }
-            
 
             Section("Companions") {
                 ForEach(companions, id: \.self) { companion in
@@ -72,12 +70,49 @@ struct EditVisitView: View {
                     .disabled(newCompanionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
+            
+            Section("Photos") {
+                if !visit.photos.isEmpty {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(visit.photos.enumerated(), id: \.offset) { index, data in
+                                photoThumbnail(data: data) {
+                                    removePhoto(at: index)
+                                }
+                            }
+                        }
+                        .padding(.vertical, 6)
+                    }
+                }
+
+                PhotosPicker(
+                    selection: $photoPickerItems,
+                    matching: .images,
+                    photoLibrary: .shared()
+                ) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "photo.badge.plus")
+                        Text(isLoadingPhotos ? "Adding..." : "Add Photos")
+                    }
+                    .font(.custom("AvenirNext-Regular", size: 16))
+                }
+                .disabled(isLoadingPhotos)
+            }
+            
+            
+            Section("Seat") {
+                TextField("Seat", text: $seatText)
+                    .font(.custom("AvenirNext-Regular", size: 16))
+            }
 
             Section("Notes") {
                 TextEditor(text: $notesText)
                     .font(.custom("AvenirNext-Regular", size: 16))
                     .frame(minHeight: 120)
             }
+        }
+        .onChange(of: photoPickerItems) {
+            loadPickedPhotos()
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -133,6 +168,59 @@ struct EditVisitView: View {
 
     private func deleteCompanions(at offsets: IndexSet) {
         companions.remove(atOffsets: offsets)
+    }
+    
+    private func photoThumbnail(data: Data, onDelete: @escaping () -> Void) -> some View {
+        ZStack(alignment: .topTrailing) {
+            Group {
+                if let image = UIImage(data: data) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                } else {
+                    Image(systemName: "photo.trianglebadge.exclamationmark")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundStyle(.gray)
+                }
+            }
+            .frame(width: 110, height: 80)
+            .cornerRadius(10)
+
+            Button {
+                onDelete()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundStyle(.white)
+                    .shadow(radius: 4)
+            }
+            .padding(6)
+        }
+    }
+
+    private func loadPickedPhotos() {
+        guard !photoPickerItems.isEmpty else { return }
+        isLoadingPhotos = true
+
+        Task {
+            var newPhotos: [Data] = []
+            for item in photoPickerItems {
+                if let data = try? await item.loadTransferable(type: Data.self) {
+                    newPhotos.append(data)
+                }
+            }
+
+            await MainActor.run {
+                visit.photos.append(contentsOf: newPhotos)
+                photoPickerItems = []
+                isLoadingPhotos = false
+            }
+        }
+    }
+
+    private func removePhoto(at index: Int) {
+        guard visit.photos.indices.contains(index) else { return }
+        visit.photos.remove(at: index)
     }
 }
 

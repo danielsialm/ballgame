@@ -22,6 +22,7 @@ class Visit {
     var notes: String?
     
     var companions: [String]
+    var photos: [Data]
 
     init(date: Date,
          league: League,
@@ -32,7 +33,8 @@ class Visit {
          awayPoints: UInt8? = nil,
          seat: String? = nil,
          notes: String? = nil,
-         companions: [String] = []
+         companions: [String] = [],
+         photos: [Data] = []
     ) {
         self.date = date
         self.league = league
@@ -44,5 +46,6 @@ class Visit {
         self.notes = notes
         self.seat = seat
         self.companions = companions
+        self.photos = photos
     }
 }
