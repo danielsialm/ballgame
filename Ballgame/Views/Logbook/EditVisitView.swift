@@ -74,14 +74,13 @@ struct EditVisitView: View {
             Section("Photos") {
                 if !visit.photos.isEmpty {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: 8) {
                             ForEach(visit.photos.enumerated(), id: \.offset) { index, data in
                                 photoThumbnail(data: data) {
                                     removePhoto(at: index)
                                 }
                             }
                         }
-                        .padding(.vertical, 6)
                     }
                 }
 
@@ -237,7 +236,11 @@ struct EditVisitView: View {
                 awayPoints: 3,
                 seat: "Loge Box 105, Row A",
                 notes: "Great weather, packed crowd, and an extra-inning finish.",
-                companions: ["Kat", "Trent", "Kyzer"]
+                companions: ["Kat", "Trent", "Kyzer"],
+                photos: [
+                    previewImageData(color: .orange),
+                    previewImageData(color: .purple)
+                ]
             )
         )
     }

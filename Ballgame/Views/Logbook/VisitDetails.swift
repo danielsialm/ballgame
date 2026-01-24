@@ -159,7 +159,7 @@ struct VisitDetails: View {
             sectionTitle("Photos")
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
+                HStack(spacing: 8) {
                     ForEach(visit.photos, id: \.self) { data in
                         if let image = UIImage(data: data) {
                             Image(uiImage: image)
@@ -314,6 +314,21 @@ struct VisitDetails: View {
     }
 }
 
+func previewImageData(color: Color, size: CGSize = CGSize(width: 600, height: 450)) -> Data {
+    let view = Rectangle()
+        .fill(color)
+        .border(.black, width: 20)
+        .frame(width: size.width, height: size.height)
+
+    let renderer = ImageRenderer(content: view)
+
+    if let uiImage = renderer.uiImage {
+        return uiImage.jpegData(compressionQuality: 0.9) ?? Data()
+    }
+
+    return Data()
+}
+
 #Preview("Visit_NFL") {
     VisitDetails(
         visit: Visit(
@@ -326,7 +341,11 @@ struct VisitDetails: View {
             awayPoints: 21,
             seat: "Section 133, Row 20, Seat 4",
             notes: "Go Bills!",
-            companions: ["Kat"]
+            companions: ["Kat"],
+            photos: [
+                previewImageData(color: .red, size: CGSize(width: 4032, height: 3024)),
+                previewImageData(color: .blue, size: CGSize(width: 3024, height: 4032))
+            ]
         )
     )
 }
@@ -343,7 +362,12 @@ struct VisitDetails: View {
             awayPoints: 3,
             seat: "Section 125, Row 3, Seat 7",
             notes: "This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. This is a really long note because I want to test what happens when you write a really long note. ",
-            companions: ["Kat", "Trent", "Kyzer"]
+            companions: ["Kat", "Trent", "Kyzer"],
+            photos: [
+                previewImageData(color: .green),
+                previewImageData(color: .orange),
+                previewImageData(color: .purple)
+            ]
         )
     )
 }
