@@ -243,7 +243,7 @@ struct VisitDetails: View {
                 .padding(.vertical, 15)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
-                .background(.blue.opacity(0.5))
+                .background(.blue.opacity(0.6))
                 .cornerRadius(10)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
@@ -258,7 +258,7 @@ struct VisitDetails: View {
                 .padding(.vertical, 15)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
-                .background(.red.opacity(0.5))
+                .background(.red.opacity(0.6))
                 .cornerRadius(10)
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }

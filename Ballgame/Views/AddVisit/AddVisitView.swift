@@ -30,6 +30,7 @@ struct AddVisitView: View {
                 Button("Cancel") {
                     dismiss()
                 }
+                .font(.custom("AvenirNext-Regular", size: 16))
             }
             ToolbarItem(placement: .principal) {
                 Text("Add Visit").font(.custom("AvenirNext-Bold", size: 25))
@@ -39,6 +40,8 @@ struct AddVisitView: View {
                     saveVisit()
                     dismiss()
                 }
+                .font(.custom("AvenirNext-DemiBold", size: 16))
+                .foregroundStyle(.blue)
             }
         }
     }

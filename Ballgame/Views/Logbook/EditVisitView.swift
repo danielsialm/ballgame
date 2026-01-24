@@ -96,6 +96,7 @@ struct EditVisitView: View {
                     dismiss()
                 }
                 .font(.custom("AvenirNext-DemiBold", size: 16))
+                .foregroundStyle(.blue)
             }
         }
     }
