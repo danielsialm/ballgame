@@ -325,62 +325,10 @@ struct VisitDetails: View {
     }
 }
 
-private struct PhotoViewer: View {
-    @Environment(\.dismiss) private var dismiss
-    @State private var selectedIndex: Int
-
-    private let photos: [Data]
-
-    init(photos: [Data], startIndex: Int) {
-        self.photos = photos
-        self._selectedIndex = State(initialValue: min(max(0, startIndex), max(photos.count - 1, 0)))
-    }
-
-    var body: some View {
-        ZStack(alignment: .topTrailing) {
-            Color.black.ignoresSafeArea()
-
-            TabView(selection: $selectedIndex) {
-                ForEach(Array(photos.enumerated()), id: \.offset) { index, data in
-                    ZStack {
-                        if let image = UIImage(data: data) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .tag(index)
-                        } else {
-                            VStack(spacing: 12) {
-                                Image(systemName: "photo.trianglebadge.exclamationmark")
-                                    .font(.system(size: 40, weight: .semibold))
-                                    .foregroundStyle(.white.opacity(0.85))
-                                Text("Unable to load photo")
-                                    .font(.custom("AvenirNext-DemiBold", size: 14))
-                                    .foregroundStyle(.white.opacity(0.8))
-                            }
-                            .tag(index)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .automatic))
-
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 26, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.9))
-                    .padding(16)
-            }
-        }
-    }
-}
-
 func previewImageData(color: Color, size: CGSize = CGSize(width: 600, height: 450)) -> Data {
     let view = Rectangle()
         .fill(color)
-        .border(.black, width: 20)
+        .border(.gray, width: 20)
         .frame(width: size.width, height: size.height)
 
     let renderer = ImageRenderer(content: view)
