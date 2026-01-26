@@ -18,12 +18,12 @@ struct EditVisitView: View {
     // TODO: Get live results via API
     @State private var homePointsText: String
     @State private var awayPointsText: String
-    @State private var seatText: String
-    @State private var notesText: String
     @State private var companions: [String]
     @State private var newCompanionName: String
     @State private var photoPickerItems: [PhotosPickerItem]
     @State private var isLoadingPhotos = false
+    @State private var seatText: String
+    @State private var notesText: String
 
     init(visit: Visit) {
         self._visit = Bindable(wrappedValue: visit)
@@ -38,80 +38,11 @@ struct EditVisitView: View {
 
     var body: some View {
         Form {
-            Section("Score") {
-                HStack {
-                    TextField("Home points", text: $homePointsText)
-                        .font(.custom("AvenirNext-Regular", size: 16))
-                        .keyboardType(.numberPad)
-                    Divider()
-                    TextField("Away points", text: $awayPointsText)
-                        .font(.custom("AvenirNext-Regular", size: 16))
-                        .keyboardType(.numberPad)
-                        .multilineTextAlignment(.trailing)
-                }
-                .padding(.horizontal, 10)
-            }
-
-            Section("Companions") {
-                ForEach(companions, id: \.self) { companion in
-                    Text(companion)
-                }
-                .onDelete(perform: deleteCompanions)
-
-                HStack {
-                    TextField("Add companion", text: $newCompanionName)
-                        .font(.custom("AvenirNext-Regular", size: 16))
-                        .textInputAutocapitalization(.words)
-                        .autocorrectionDisabled()
-                    Button("Add") {
-                        addCompanion()
-                    }
-                    .font(.custom("AvenirNext-Regular", size: 16))
-                    .disabled(newCompanionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                }
-            }
-            
-            Section("Photos") {
-                if !visit.photos.isEmpty {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8) {
-                            ForEach(visit.photos.enumerated(), id: \.offset) { index, data in
-                                photoThumbnail(data: data) {
-                                    removePhoto(at: index)
-                                }
-                            }
-                        }
-                    }
-                }
-
-                PhotosPicker(
-                    selection: $photoPickerItems,
-                    matching: .images,
-                    photoLibrary: .shared()
-                ) {
-                    HStack(spacing: 8) {
-                        Image(systemName: "photo.badge.plus")
-                        Text(isLoadingPhotos ? "Adding..." : "Add Photos")
-                    }
-                    .font(.custom("AvenirNext-Regular", size: 16))
-                }
-                .disabled(isLoadingPhotos)
-            }
-            
-            
-            Section("Seat") {
-                TextField("Seat", text: $seatText)
-                    .font(.custom("AvenirNext-Regular", size: 16))
-            }
-
-            Section("Notes") {
-                TextEditor(text: $notesText)
-                    .font(.custom("AvenirNext-Regular", size: 16))
-                    .frame(minHeight: 120)
-            }
-        }
-        .onChange(of: photoPickerItems) {
-            loadPickedPhotos()
+            scoreCard
+            companionCard
+            photoCard
+            seatCard
+            notesCard
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -134,7 +65,7 @@ struct EditVisitView: View {
             }
         }
     }
-
+    
     private func saveChanges() {
         visit.homePoints = parsePoints(homePointsText)
         visit.awayPoints = parsePoints(awayPointsText)
@@ -147,9 +78,27 @@ struct EditVisitView: View {
 
         visit.companions = companions
 
-        try? modelContext.save()
+        if visit.hasChanges {
+            try? modelContext.save()
+        }
     }
-
+    
+    // MARK: Score
+    
+    private var scoreCard: some View {
+        Section("Score") {
+            HStack {
+                TextField("Home points", text: $homePointsText)
+                Divider()
+                TextField("Away points", text: $awayPointsText)
+                    .multilineTextAlignment(.trailing)
+            }
+            .font(.custom("AvenirNext-Regular", size: 16))
+            .keyboardType(.numberPad)
+            .padding(.horizontal, 10)
+        }
+    }
+    
     private func parsePoints(_ text: String) -> UInt8? {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
@@ -157,7 +106,30 @@ struct EditVisitView: View {
         }
         return UInt8(trimmed)
     }
+    
+    // MARK: Companions
+    
+    private var companionCard: some View {
+        Section("Companions") {
+            ForEach(companions, id: \.self) { companion in
+                Text(companion)
+            }
+            .onDelete(perform: deleteCompanions)
 
+            HStack {
+                TextField("Add companion", text: $newCompanionName)
+                    .font(.custom("AvenirNext-Regular", size: 16))
+                    .textInputAutocapitalization(.words)
+                    .autocorrectionDisabled()
+                Button("Add") {
+                    addCompanion()
+                }
+                .font(.custom("AvenirNext-Regular", size: 16))
+                .disabled(newCompanionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+        }
+    }
+    
     private func addCompanion() {
         let trimmed = newCompanionName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
@@ -167,6 +139,40 @@ struct EditVisitView: View {
 
     private func deleteCompanions(at offsets: IndexSet) {
         companions.remove(atOffsets: offsets)
+    }
+    
+    // MARK: Photos
+    
+    private var photoCard: some View {
+        Section("Photos") {
+            if !visit.photos.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(visit.photos.enumerated(), id: \.offset) { index, data in
+                            photoThumbnail(data: data) {
+                                removePhoto(at: index)
+                            }
+                        }
+                    }
+                }
+            }
+
+            PhotosPicker(
+                selection: $photoPickerItems,
+                matching: .images,
+                photoLibrary: .shared()
+            ) {
+                HStack(spacing: 8) {
+                    Image(systemName: "photo.badge.plus")
+                    Text(isLoadingPhotos ? "Adding..." : "Add Photos")
+                }
+                .font(.custom("AvenirNext-Regular", size: 16))
+            }
+            .disabled(isLoadingPhotos)
+        }
+        .onChange(of: photoPickerItems) {
+            loadPickedPhotos()
+        }
     }
     
     private func photoThumbnail(data: Data, onDelete: @escaping () -> Void) -> some View {
@@ -220,6 +226,25 @@ struct EditVisitView: View {
     private func removePhoto(at index: Int) {
         guard visit.photos.indices.contains(index) else { return }
         visit.photos.remove(at: index)
+    }
+    
+    // MARK: Seat
+    
+    private var seatCard: some View {
+        Section("Seat") {
+            TextField("Seat", text: $seatText)
+                .font(.custom("AvenirNext-Regular", size: 16))
+        }
+    }
+    
+    // MARK: Notes
+    
+    private var notesCard: some View {
+        Section("Notes") {
+            TextEditor(text: $notesText)
+                .font(.custom("AvenirNext-Regular", size: 16))
+                .frame(minHeight: 120)
+        }
     }
 }
 

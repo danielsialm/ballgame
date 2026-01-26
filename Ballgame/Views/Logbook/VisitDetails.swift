@@ -20,12 +20,6 @@ struct VisitDetails: View {
     @State private var item: MKMapItem?
 
     let visit: Visit
-    private let coordinates: CLLocationCoordinate2D?
-    
-    init(visit: Visit) {
-        self.visit = visit
-        self.coordinates = VisitDetails.getStadiumCoordinates(id: visit.stadiumId)
-    }
 
     var body: some View {
         ScrollView {
@@ -67,23 +61,6 @@ struct VisitDetails: View {
     }
 
     // MARK: Map
-    
-    private static func getStadiumCoordinates(id: String) -> CLLocationCoordinate2D? {
-        guard let stadium = DataManager.shared.stadiums.first(where: { $0.id == id }),
-              let latitude = stadium.latitude,
-              let longitude = stadium.longitude else {
-            return nil
-        }
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    }
-    
-    private static func getPlaceId(id: String) -> String? {
-        guard let stadium = DataManager.shared.stadiums.first(where: { $0.id == id }),
-              let placeId = stadium.placeId else {
-            return nil
-        }
-        return placeId
-    }
 
     private var mapCard: some View {
         Group {
@@ -135,6 +112,14 @@ struct VisitDetails: View {
             }
         }
     }
+    
+    private static func getPlaceId(id: String) -> String? {
+        guard let stadium = DataManager.shared.stadiums.first(where: { $0.id == id }),
+              let placeId = stadium.placeId else {
+            return nil
+        }
+        return placeId
+    }
 
     // MARK: Companions
 
@@ -179,8 +164,6 @@ struct VisitDetails: View {
                                 missingPhoto
                             }
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Photo \(index + 1)")
                     }
                     .frame(width: 120, height: 90)
                     .cornerRadius(10)
@@ -324,6 +307,8 @@ struct VisitDetails: View {
         DataManager.shared.teams.first(where: { $0.id == visit.awayTeamId })
     }
 }
+
+// MARK: Previews
 
 func previewImageData(color: Color, size: CGSize = CGSize(width: 600, height: 450)) -> Data {
     let view = Rectangle()

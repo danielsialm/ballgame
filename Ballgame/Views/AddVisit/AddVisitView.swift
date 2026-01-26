@@ -46,7 +46,6 @@ struct AddVisitView: View {
         }
     }
     
-    // MARK: Header
     private var canSave: Bool {
         !stadiumId.isEmpty &&
         !homeTeamId.isEmpty &&
