@@ -76,7 +76,11 @@ struct LogbookView: View {
                 emptyState
             } else {
                 ForEach(visits) { visit in
-                    LogbookCard(visit: visit)
+                    NavigationLink {
+                        VisitDetails(visit: visit)
+                    } label: {
+                        VisitCard(visit: visit)
+                    }
                 }
             }
         }

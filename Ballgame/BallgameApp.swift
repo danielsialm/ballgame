@@ -25,7 +25,9 @@ struct BallgameApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootTabView()
+            NavigationStack {
+                RootTabView()
+            }
         }
         .modelContainer(sharedModelContainer)
     }
@@ -53,25 +55,25 @@ private struct RootTabView: View {
                     Label("Logbook", systemImage: "book.closed")
                 }
                 .tag(Tab.logbook)
-
+            
             StadiumsView()
                 .tabItem {
                     Label("Stadiums", systemImage: "building.columns")
                 }
                 .tag(Tab.stadiums)
-
+            
             Color.clear
                 .tabItem {
                     Label("Add", systemImage: "plus.circle.fill")
                 }
                 .tag(Tab.add)
-
+            
             FriendsView()
                 .tabItem {
                     Label("Friends", systemImage: "person.2.fill")
                 }
                 .tag(Tab.friends)
-
+            
             AccountView()
                 .tabItem {
                     Label("Account", systemImage: "person.crop.circle")
@@ -88,8 +90,10 @@ private struct RootTabView: View {
             }
         }
         .sheet(isPresented: $isAddSheetPresented) {
-            AddVisitView()
-                .presentationDetents([.medium])
+            NavigationStack {
+                AddVisitView()
+                    .presentationDetents([.medium])
+            }
         }
     }
 }

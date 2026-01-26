@@ -20,36 +20,28 @@ struct AddVisitView: View {
     @State private var seat = ""
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: 24) {
-                header
-                gameInfo
-                detailInfo
-            }
-            .padding(20)
+        VStack(alignment: .center, spacing: 24) {
+            gameInfo
         }
-    }
-    
-    // MARK: Header
-    
-    private var header: some View {
-        ZStack {
-            Text("Add Visit")
-                .font(.custom("AvenirNext-Heavy", size: 36))
-
-            HStack {
+        .padding(20)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
                     dismiss()
                 }
-                .font(.custom("AvenirNext-DemiBold", size: 20))
-
-                Spacer()
-
+                .font(.custom("AvenirNext-Regular", size: 16))
+            }
+            ToolbarItem(placement: .principal) {
+                Text("Add Visit").font(.custom("AvenirNext-Bold", size: 25))
+            }
+            ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     saveVisit()
+                    dismiss()
                 }
-                .font(.custom("AvenirNext-DemiBold", size: 20))
-                .disabled(!canSave)
+                .font(.custom("AvenirNext-DemiBold", size: 16))
+                .foregroundStyle(.blue)
             }
         }
     }
@@ -72,7 +64,6 @@ struct AddVisitView: View {
             
         )
         modelContext.insert(visit)
-        dismiss()
     }
     
     // MARK: Visit Info
@@ -172,31 +163,10 @@ struct AddVisitView: View {
             
         }
     }
-    
-    private var detailInfo: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text("Details")
-                .font(.custom("AvenirNext-DemiBold", size: 20))
-                .padding(.leading, 5)
-            
-            VStack(alignment: .leading) {
-                TextField("Seat", text: $seat)
-                    .font(.custom("AvenirNext-Regular", size: 16))
-                
-                Divider()
-                
-                TextField("Notes", text: $notes, axis: .vertical)
-                    .lineLimit(3...3)
-                    .font(.custom("AvenirNext-Regular", size: 16))
-            }
-            .padding(12)
-            .background(.white)
-            .cornerRadius(10)
-            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-        }
-    }
 }
 
 #Preview {
-    AddVisitView()
+    NavigationStack {
+        AddVisitView()
+    }
 }
