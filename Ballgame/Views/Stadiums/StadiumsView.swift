@@ -95,7 +95,7 @@ struct StadiumsView: View {
     private var stadiumList: some View {
         VStack(spacing: 14) {
             if filteredStadiums.isEmpty {
-                emptyState
+                emptyList
             } else {
                 ForEach(filteredStadiums) { stadium in
                     NavigationLink {
@@ -138,7 +138,7 @@ struct StadiumsView: View {
         DataManager.shared.teams.filter { $0.stadiumId == stadium.id }
     }
     
-    private var emptyState: some View {
+    private var emptyList: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("No matches")
                 .font(.custom("AvenirNext-DemiBold", size: 18))
@@ -156,7 +156,5 @@ struct StadiumsView: View {
 }
 
 #Preview {
-    NavigationStack {
-        StadiumsView()
-    }
+    StadiumsView()
 }
