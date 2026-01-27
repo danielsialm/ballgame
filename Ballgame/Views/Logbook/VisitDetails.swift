@@ -5,9 +5,8 @@
 //  Created by Daniel Sialm on 1/22/26.
 //
 
-import SwiftUI
 import SwiftData
-import MapKit
+import SwiftUI
 
 struct VisitDetails: View {
     @Environment(\.modelContext) private var modelContext
@@ -16,8 +15,6 @@ struct VisitDetails: View {
     @State private var showingEditSheet = false
     @State private var showingPhotoViewer = false
     @State private var selectedPhotoIndex = 0
-    
-    @State private var item: MKMapItem?
 
     let visit: Visit
 
@@ -40,9 +37,7 @@ struct VisitDetails: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
-            .padding(.bottom, 28)
         }
-        .background(Color(.systemGroupedBackground))
         .sheet(isPresented: $showingEditSheet) {
             NavigationStack {
                 EditVisitView(visit: visit)
@@ -61,56 +56,11 @@ struct VisitDetails: View {
     }
 
     // MARK: Map
-
-    private var mapCard: some View {
-        Group {
-            if let item {
-                Map(initialPosition: .region(
-                    MKCoordinateRegion(
-                        center: item.location.coordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.0035, longitudeDelta: 0.0035))
-                )) {
-                    Marker(item: item)
-                }
-                .mapStyle(.standard(elevation: .realistic))
-                
-            } else {
-                emptyMap
-            }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .frame(height: 250)
-        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-        .task {
-            guard let placeId = VisitDetails.getPlaceId(id: visit.stadiumId),
-                  let identifier = MKMapItem.Identifier(rawValue: placeId) else {
-                return
-            }
-            let request = MKMapItemRequest(mapItemIdentifier: identifier)
-            item = try? await request.mapItem
-        }
-    }
     
-    private var emptyMap: some View {
-        ZStack {
-            LinearGradient(
-                colors: [Color.green.opacity(0.35), Color.blue.opacity(0.35)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-
-            VStack(spacing: 6) {
-                Image(systemName: "map.fill")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(.white)
-                Text("Map unavailable")
-                    .font(.custom("AvenirNext-DemiBold", size: 14))
-                    .foregroundStyle(.white)
-                Text(stadiumName)
-                    .font(.custom("AvenirNext-Regular", size: 12))
-                    .foregroundStyle(.white.opacity(0.9))
-            }
-        }
+    private var mapCard: some View {
+        MapCard(placeId: VisitDetails.getPlaceId(id: visit.stadiumId))
+            .clipShape(.rect(cornerRadius: 10))
+            .frame(height: 250)
     }
     
     private static func getPlaceId(id: String) -> String? {
