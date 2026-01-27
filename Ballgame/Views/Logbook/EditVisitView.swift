@@ -190,7 +190,7 @@ struct EditVisitView: View {
                 }
             }
             .frame(width: 110, height: 80)
-            .cornerRadius(10)
+            .clipShape(.rect(cornerRadius: 10))
 
             Button {
                 onDelete()

@@ -5,10 +5,18 @@
 //  Created by Daniel Sialm on 1/27/26.
 //
 
+import SwiftData
 import SwiftUI
 
 struct StadiumDetailView: View {
     let stadium: Stadium
+    
+    @Query private var visits: [Visit]
+    
+    init(stadium: Stadium) {
+        self.stadium = stadium
+        _visits = Query(filter: #Predicate { $0.stadiumId == stadium.id })
+    }
     
     var body: some View {
         ScrollView {
@@ -35,14 +43,14 @@ struct StadiumDetailView: View {
         HStack(alignment: .center, spacing: 12) {
             statCard(title: "League", value: stadium.league?.displayName ?? "—")
             statCard(title: "Capacity", value: stadium.capacity.map { $0.formatted(.number) } ?? "—")
-            statCard(title: "Teams", value: "\(stadiumTeams.count)")
+            statCard(title: "Visits", value: "\(visits.count)")
         }
     }
     
     private func statCard(title: String, value: String) -> some View {
         VStack(alignment: .center) {
             Text(value)
-                .font(.custom("AvenirNext-DemiBold", size: 18))
+                .font(.custom("AvenirNext-Bold", size: 18))
             
             Text(title.uppercased())
                 .font(.custom("AvenirNext-DemiBold", size: 10))

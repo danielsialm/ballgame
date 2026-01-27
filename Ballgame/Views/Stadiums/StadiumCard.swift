@@ -36,7 +36,7 @@ struct StadiumCard: View {
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.white)
-        .cornerRadius(10)
+        .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
     

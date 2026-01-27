@@ -85,7 +85,7 @@ struct VisitDetails: View {
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
                             .background(.white)
-                            .cornerRadius(10)
+                            .clipShape(.rect(cornerRadius: 10))
                     }
                 }
             }
@@ -116,7 +116,7 @@ struct VisitDetails: View {
                         }
                     }
                     .frame(width: 120, height: 90)
-                    .cornerRadius(10)
+                    .clipShape(.rect(cornerRadius: 10))
                 }
             }
         }
@@ -154,7 +154,7 @@ struct VisitDetails: View {
             }
             .padding(16)
             .background(.white)
-            .cornerRadius(10)
+            .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
@@ -183,7 +183,7 @@ struct VisitDetails: View {
             .frame(height: 100)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(.white)
-            .cornerRadius(10)
+            .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
@@ -208,7 +208,7 @@ struct VisitDetails: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .background(.blue.opacity(0.6))
-                .cornerRadius(10)
+                .clipShape(.rect(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
@@ -223,7 +223,7 @@ struct VisitDetails: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .background(.red.opacity(0.6))
-                .cornerRadius(10)
+                .clipShape(.rect(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
         .alert("Delete this visit?", isPresented: $showingDeleteAlert) {

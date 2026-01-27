@@ -21,13 +21,6 @@ struct StadiumsView: View {
             .padding(.horizontal, 20)
             .padding(.top, 20)
         }
-        .background(
-            LinearGradient(
-                colors: [Color(.systemGray6), Color(.systemBackground)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        )
     }
     
     // MARK: Header
