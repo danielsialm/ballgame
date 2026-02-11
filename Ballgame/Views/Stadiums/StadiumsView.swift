@@ -28,7 +28,7 @@ struct StadiumsView: View {
     
     private var header: some View {
         Text("Stadiums")
-            .font(.custom("AvenirNext-Heavy", size: 36))
+            .font(.title)
             .frame(maxWidth: .infinity, alignment: .center)
     }
     
@@ -53,7 +53,7 @@ struct StadiumsView: View {
             leagueFilter = league
         } label: {
             Text(league?.displayName ?? "All")
-                .font(.custom("AvenirNext-DemiBold", size: 14))
+                .font(.subheadline.pointSize(14))
                 .padding(.vertical, 8)
                 .padding(.horizontal, 14)
                 .background(league == leagueFilter ? Color.black : Color.white)
@@ -68,7 +68,7 @@ struct StadiumsView: View {
                 .foregroundStyle(.gray)
             
             TextField("Search", text: $searchText)
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body)
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled(true)
                 .frame(height: 25)
@@ -141,10 +141,10 @@ struct StadiumsView: View {
     private var emptyList: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("No matches")
-                .font(.custom("AvenirNext-DemiBold", size: 18))
+                .font(.headline)
             
             Text("Try another stadium, team name, or city.")
-                .font(.custom("AvenirNext-Regular", size: 14))
+                .font(.body)
                 .foregroundStyle(.gray)
         }
         .padding(16)

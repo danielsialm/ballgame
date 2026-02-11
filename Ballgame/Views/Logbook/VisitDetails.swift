@@ -57,33 +57,10 @@ struct VisitDetails: View {
 
     // MARK: Map
     
-<<<<<<< HEAD
-    private var emptyMap: some View {
-        ZStack {
-            LinearGradient(
-                colors: [Color.green.opacity(0.35), Color.blue.opacity(0.35)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-
-            VStack(spacing: 6) {
-                Image(systemName: "map.fill")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(.white)
-                Text("Map Unavailable")
-                    .font(.subheadline)
-                    .foregroundStyle(.white)
-                Text(stadiumName)
-                    .font(.smallBody)
-                    .foregroundStyle(.white.opacity(0.9))
-            }
-        }
-=======
     private var mapCard: some View {
         MapCard(placeId: VisitDetails.getPlaceId(id: visit.stadiumId))
             .clipShape(.rect(cornerRadius: 10))
             .frame(height: 250)
->>>>>>> main
     }
     
     private static func getPlaceId(id: String) -> String? {
@@ -138,13 +115,8 @@ struct VisitDetails: View {
                             }
                         }
                     }
-<<<<<<< HEAD
-                    .frame(width: 180, height: 135)
-                    .cornerRadius(10)
-=======
                     .frame(width: 120, height: 90)
                     .clipShape(.rect(cornerRadius: 10))
->>>>>>> main
                 }
             }
         }

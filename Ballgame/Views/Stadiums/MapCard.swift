@@ -54,7 +54,7 @@ private var emptyMap: some View {
                 .font(.system(size: 28, weight: .bold))
                 .foregroundStyle(.white)
             Text("Map unavailable")
-                .font(.custom("AvenirNext-DemiBold", size: 14))
+                .font(.subheadline)
                 .foregroundStyle(.white)
         }
     }
