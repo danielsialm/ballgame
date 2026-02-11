@@ -20,7 +20,7 @@ struct AddVisitView: View {
     @State private var seat = ""
 
     var body: some View {
-        VStack(alignment: .center, spacing: 24) {
+        VStack(alignment: .center, spacing: 30) {
             gameInfo
         }
         .padding(20)
@@ -30,17 +30,17 @@ struct AddVisitView: View {
                 Button("Cancel") {
                     dismiss()
                 }
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body.pointSize(16))
             }
             ToolbarItem(placement: .principal) {
-                Text("Add Visit").font(.custom("AvenirNext-Bold", size: 25))
+                Text("Add Visit").font(.smallTitle)
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     saveVisit()
                     dismiss()
                 }
-                .font(.custom("AvenirNext-DemiBold", size: 16))
+                .font(.subheadline.pointSize(16))
                 .foregroundStyle(.blue)
             }
         }
@@ -74,30 +74,28 @@ struct AddVisitView: View {
 
         return VStack(alignment: .leading, spacing: 2) {
             Text("Game")
-                .font(.custom("AvenirNext-DemiBold", size: 20))
+                .font(.headline)
                 .padding(.leading, 5)
             
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 12) {
                 Picker("League", selection: $league) {
                     ForEach(League.allCases) { league in
                         Text(league.displayName).tag(league)
+                            .font(.body)
                     }
                 }
-                .font(.custom("AvenirNext-Regular", size: 16))
                 .pickerStyle(.segmented)
-                .frame(height: 30)
                 
                 Divider()
                 
                 DatePicker("Date", selection: $date, displayedComponents: .date)
-                    .font(.custom("AvenirNext-Regular", size: 16))
-                    .frame(height: 30)
+                    .font(.body)
                 
                 Divider()
                 
                 HStack {
                     Text("Stadium")
-                        .font(.custom("AvenirNext-Regular", size: 16))
+                        .font(.body)
                     
                     Spacer()
                     
@@ -108,7 +106,7 @@ struct AddVisitView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .font(.custom("AvenirNext-Regular", size: 16))
+                    .font(.body)
                     .pickerStyle(.menu)
                     .labelsHidden()
                 }
@@ -118,7 +116,7 @@ struct AddVisitView: View {
                 
                 HStack {
                     Text("Home Team")
-                        .font(.custom("AvenirNext-Regular", size: 16))
+                        .font(.body)
                     
                     Spacer()
                     
@@ -129,7 +127,7 @@ struct AddVisitView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .font(.custom("AvenirNext-Regular", size: 16))
+                    .font(.body)
                     .pickerStyle(.menu)
                     .labelsHidden()
                 }
@@ -139,7 +137,7 @@ struct AddVisitView: View {
                 
                 HStack {
                     Text("Away Team")
-                        .font(.custom("AvenirNext-Regular", size: 16))
+                        .font(.body)
                     
                     Spacer()
                     
@@ -150,7 +148,7 @@ struct AddVisitView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    .font(.custom("AvenirNext-Regular", size: 16))
+                    .font(.body)
                     .pickerStyle(.menu)
                     .labelsHidden()
                 }

@@ -28,7 +28,7 @@ struct LogbookView: View {
     // TODO: Options to add Visits and Search
     private var header: some View {
         Text("Logbook")
-            .font(.custom("AvenirNext-Heavy", size: 36))
+            .font(.title)
     }
     
     // MARK: Lifetime Stats
@@ -48,10 +48,10 @@ struct LogbookView: View {
     private func statCard(title: String, value: String) -> some View {
         VStack(alignment: .center) {
             Text(value)
-                .font(.custom("AvenirNext-Heavy", size: 28))
+                .font(.numberStat)
             
             Text(title.uppercased())
-                .font(.custom("AvenirNext-DemiBold", size: 12))
+                .font(.subheadline.pointSize(13))
                 .foregroundStyle(.gray)
         }
         .padding(16)
@@ -89,10 +89,10 @@ struct LogbookView: View {
     private var emptyState: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("No visits yet")
-                .font(.custom("AvenirNext-DemiBold", size: 18))
+                .font(.headline)
 
             Text("Start by logging your first game!")
-                .font(.custom("AvenirNext-Regular", size: 14))
+                .font(.body)
                 .foregroundStyle(.gray)
         }
         .padding(16)
@@ -110,7 +110,7 @@ struct LogbookView: View {
     let container = try! ModelContainer(for: Visit.self, configurations: config)
     let context = container.mainContext
 
-    context.insert(Visit(date: Date(), league: .mlb, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-chc"))
+    context.insert(Visit(date: Date(), league: .mlb, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-chc", homePoints: 12, awayPoints: 7))
     context.insert(Visit(date: Calendar.current.date(byAdding: .day, value: -28, to: Date())!, league: .mlb, stadiumId: "mlb-fenway-park", homeTeamId: "mlb-bos", awayTeamId: "mlb-tex"))
     context.insert(Visit(date: Calendar.current.date(byAdding: .day, value: -14, to: Date())!, league: .nfl, stadiumId: "nfl-lambeau-field", homeTeamId: "nfl-gb", awayTeamId: "nfl-chi"))
 

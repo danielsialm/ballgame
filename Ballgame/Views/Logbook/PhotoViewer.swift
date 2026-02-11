@@ -31,9 +31,9 @@ struct PhotoViewer: View {
                     } else {
                         VStack(spacing: 12) {
                             Image(systemName: "photo.trianglebadge.exclamationmark")
-                                .font(.system(size: 40, weight: .semibold))
+                                .font(.system(size: 50, weight: .semibold))
                             Text("Unable to load photo")
-                                .font(.custom("AvenirNext-DemiBold", size: 14))
+                                .font(.subheadline)
                         }
                         .foregroundStyle(.white.opacity(0.8))
                     }

@@ -23,7 +23,7 @@ struct VisitDetails: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: 50) {
                 header
                 mapCard
                 if !visit.companions.isEmpty {
@@ -103,11 +103,11 @@ struct VisitDetails: View {
                 Image(systemName: "map.fill")
                     .font(.system(size: 28, weight: .bold))
                     .foregroundStyle(.white)
-                Text("Map unavailable")
-                    .font(.custom("AvenirNext-DemiBold", size: 14))
+                Text("Map Unavailable")
+                    .font(.subheadline)
                     .foregroundStyle(.white)
                 Text(stadiumName)
-                    .font(.custom("AvenirNext-Regular", size: 12))
+                    .font(.smallBody)
                     .foregroundStyle(.white.opacity(0.9))
             }
         }
@@ -131,9 +131,9 @@ struct VisitDetails: View {
                 HStack(spacing: 10) {
                     ForEach(visit.companions, id: \.self) { friend in
                         Text(friend)
-                            .font(.custom("AvenirNext-DemiBold", size: 12))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 8)
+                            .font(.subheadline)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
                             .background(.white)
                             .cornerRadius(10)
                     }
@@ -165,7 +165,7 @@ struct VisitDetails: View {
                             }
                         }
                     }
-                    .frame(width: 120, height: 90)
+                    .frame(width: 180, height: 135)
                     .cornerRadius(10)
                 }
             }
@@ -182,7 +182,7 @@ struct VisitDetails: View {
                     .foregroundStyle(.gray)
                 
                 Text("Error Loading Photo")
-                    .font(.custom("AvenirNext-DemiBold", size: 11))
+                    .font(.body)
                     .foregroundStyle(.gray)
             }
 
@@ -197,9 +197,13 @@ struct VisitDetails: View {
 
             VStack(spacing: 12) {
                 detailRow(label: "Stadium", value: stadiumName)
+                Divider()
                 detailRow(label: "League", value: visit.league.displayName)
+                Divider()
                 detailRow(label: "Seat", value: visit.seat ?? "-")
+                Divider()
                 detailRow(label: "Home Team", value: homeTeam?.name ?? "-")
+                Divider()
                 detailRow(label: "Away Team", value: awayTeam?.name ?? "-")
             }
             .padding(16)
@@ -212,11 +216,11 @@ struct VisitDetails: View {
     private func detailRow(label: String, value: String) -> some View {
         HStack {
             Text(label)
-                .font(.custom("AvenirNext-DemiBold", size: 12))
+                .font(.subheadline.pointSize(16))
                 .foregroundStyle(.gray)
             Spacer()
             Text(value)
-                .font(.custom("AvenirNext-Regular", size: 14))
+                .font(.body)
         }
     }
 
@@ -227,7 +231,7 @@ struct VisitDetails: View {
             sectionTitle("Notes")
             ScrollView {
                 Text(visit.notes ?? "")
-                    .font(.custom("AvenirNext-Regular", size: 14))
+                    .font(.body)
                     .padding(16)
             }
             .frame(height: 100)
@@ -253,7 +257,7 @@ struct VisitDetails: View {
             showingEditSheet = true
         } label: {
             Text("Edit Visit")
-                .font(.custom("AvenirNext-DemiBold", size: 12))
+                .font(.subheadline.pointSize(13))
                 .padding(.vertical, 15)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
@@ -268,7 +272,7 @@ struct VisitDetails: View {
             showingDeleteAlert = true
         } label: {
             Text("Delete Visit")
-                .font(.custom("AvenirNext-DemiBold", size: 12))
+                .font(.subheadline.pointSize(13))
                 .padding(.vertical, 15)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
@@ -291,7 +295,7 @@ struct VisitDetails: View {
 
     private func sectionTitle(_ title: String) -> some View {
         Text(title)
-            .font(.custom("AvenirNext-Heavy", size: 16))
+            .font(.headline)
             .padding(.leading, 5)
     }
 
@@ -378,7 +382,10 @@ func previewImageData(color: Color, size: CGSize = CGSize(width: 600, height: 45
             league: .mlb,
             stadiumId: "mlb-no-park",
             homeTeamId: "mlb-home",
-            awayTeamId: "mlb-away"
+            awayTeamId: "mlb-away",
+            photos: [
+                Data()
+            ]
         )
     )
 }
