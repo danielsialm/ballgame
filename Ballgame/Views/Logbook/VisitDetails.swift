@@ -5,9 +5,8 @@
 //  Created by Daniel Sialm on 1/22/26.
 //
 
-import SwiftUI
 import SwiftData
-import MapKit
+import SwiftUI
 
 struct VisitDetails: View {
     @Environment(\.modelContext) private var modelContext
@@ -16,8 +15,6 @@ struct VisitDetails: View {
     @State private var showingEditSheet = false
     @State private var showingPhotoViewer = false
     @State private var selectedPhotoIndex = 0
-    
-    @State private var item: MKMapItem?
 
     let visit: Visit
 
@@ -40,9 +37,7 @@ struct VisitDetails: View {
             }
             .padding(.horizontal, 20)
             .padding(.top, 20)
-            .padding(.bottom, 28)
         }
-        .background(Color(.systemGroupedBackground))
         .sheet(isPresented: $showingEditSheet) {
             NavigationStack {
                 EditVisitView(visit: visit)
@@ -61,36 +56,8 @@ struct VisitDetails: View {
     }
 
     // MARK: Map
-
-    private var mapCard: some View {
-        Group {
-            if let item {
-                Map(initialPosition: .region(
-                    MKCoordinateRegion(
-                        center: item.location.coordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.0035, longitudeDelta: 0.0035))
-                )) {
-                    Marker(item: item)
-                }
-                .mapStyle(.standard(elevation: .realistic))
-                
-            } else {
-                emptyMap
-            }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .frame(height: 250)
-        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-        .task {
-            guard let placeId = VisitDetails.getPlaceId(id: visit.stadiumId),
-                  let identifier = MKMapItem.Identifier(rawValue: placeId) else {
-                return
-            }
-            let request = MKMapItemRequest(mapItemIdentifier: identifier)
-            item = try? await request.mapItem
-        }
-    }
     
+<<<<<<< HEAD
     private var emptyMap: some View {
         ZStack {
             LinearGradient(
@@ -111,6 +78,12 @@ struct VisitDetails: View {
                     .foregroundStyle(.white.opacity(0.9))
             }
         }
+=======
+    private var mapCard: some View {
+        MapCard(placeId: VisitDetails.getPlaceId(id: visit.stadiumId))
+            .clipShape(.rect(cornerRadius: 10))
+            .frame(height: 250)
+>>>>>>> main
     }
     
     private static func getPlaceId(id: String) -> String? {
@@ -135,7 +108,7 @@ struct VisitDetails: View {
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
                             .background(.white)
-                            .cornerRadius(10)
+                            .clipShape(.rect(cornerRadius: 10))
                     }
                 }
             }
@@ -165,8 +138,13 @@ struct VisitDetails: View {
                             }
                         }
                     }
+<<<<<<< HEAD
                     .frame(width: 180, height: 135)
                     .cornerRadius(10)
+=======
+                    .frame(width: 120, height: 90)
+                    .clipShape(.rect(cornerRadius: 10))
+>>>>>>> main
                 }
             }
         }
@@ -208,7 +186,7 @@ struct VisitDetails: View {
             }
             .padding(16)
             .background(.white)
-            .cornerRadius(10)
+            .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
@@ -237,7 +215,7 @@ struct VisitDetails: View {
             .frame(height: 100)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(.white)
-            .cornerRadius(10)
+            .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
@@ -262,7 +240,7 @@ struct VisitDetails: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .background(.blue.opacity(0.6))
-                .cornerRadius(10)
+                .clipShape(.rect(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
     }
@@ -277,7 +255,7 @@ struct VisitDetails: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .background(.red.opacity(0.6))
-                .cornerRadius(10)
+                .clipShape(.rect(cornerRadius: 10))
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
         .alert("Delete this visit?", isPresented: $showingDeleteAlert) {
