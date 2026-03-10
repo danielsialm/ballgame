@@ -40,7 +40,7 @@ struct LogbookView: View {
             statCard(title: "Stadiums", value: "\(uniqueStadiumCount)")
             statCard(title: "Teams", value: "\(uniqueTeamCount)")
         }
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -81,6 +81,7 @@ struct LogbookView: View {
                     } label: {
                         VisitCard(visit: visit)
                     }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -97,7 +98,7 @@ struct LogbookView: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }

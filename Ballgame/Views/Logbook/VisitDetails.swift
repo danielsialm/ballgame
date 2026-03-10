@@ -84,7 +84,7 @@ struct VisitDetails: View {
                             .font(.subheadline)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
-                            .background(.white)
+                            .background(Color(.secondarySystemBackground))
                             .clipShape(.rect(cornerRadius: 10))
                     }
                 }
@@ -124,7 +124,7 @@ struct VisitDetails: View {
     
     private var missingPhoto: some View {
         ZStack {
-            Color.white
+            Color(.secondarySystemBackground)
             
             VStack(spacing: 8) {
                 Image(systemName: "photo.trianglebadge.exclamationmark")
@@ -157,7 +157,7 @@ struct VisitDetails: View {
                 detailRow(label: "Away Team", value: awayTeam?.name ?? "-")
             }
             .padding(16)
-            .background(.white)
+            .background(Color(.secondarySystemBackground))
             .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }
@@ -186,7 +186,7 @@ struct VisitDetails: View {
             }
             .frame(height: 100)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.white)
+            .background(Color(.secondarySystemBackground))
             .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
         }

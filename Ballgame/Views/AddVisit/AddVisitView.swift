@@ -155,7 +155,7 @@ struct AddVisitView: View {
                 .frame(height: 30)
             }
             .padding(16)
-            .background(.white)
+            .background(Color(.secondarySystemBackground))
             .clipShape(.rect(cornerRadius: 10))
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
             

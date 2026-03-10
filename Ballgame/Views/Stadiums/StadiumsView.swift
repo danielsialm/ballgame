@@ -56,8 +56,8 @@ struct StadiumsView: View {
                 .font(.subheadline.pointSize(14))
                 .padding(.vertical, 8)
                 .padding(.horizontal, 14)
-                .background(league == leagueFilter ? Color.black : Color.white)
-                .foregroundStyle(league == leagueFilter ? .white : .black)
+                .background(league == leagueFilter ? Color.primary : Color(.secondarySystemBackground))
+                .foregroundStyle(league == leagueFilter ? Color(.systemBackground) : .primary)
                 .clipShape(Capsule())
         }
     }
@@ -85,7 +85,7 @@ struct StadiumsView: View {
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 14)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -149,7 +149,7 @@ struct StadiumsView: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }

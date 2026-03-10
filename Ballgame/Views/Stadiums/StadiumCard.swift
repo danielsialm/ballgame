@@ -15,7 +15,7 @@ struct StadiumCard: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(stadium.name)
                     .font(.headline)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                 
                 Text(locationText)
                     .font(.body)
@@ -29,13 +29,13 @@ struct StadiumCard: View {
                     .font(.subheadline.pointSize(12))
                     .padding(.vertical, 6)
                     .padding(.horizontal, 10)
-                    .background(Color.black.opacity(0.08))
+                    .background(Color.primary.opacity(0.08))
                     .clipShape(Capsule())
             }
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }

@@ -58,7 +58,7 @@ struct StadiumDetailView: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 20))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -93,13 +93,13 @@ struct StadiumDetailView: View {
                                     .scaledToFit()
                                     .frame(width: 50, height: 50)
                                     .padding(15)
-                                    .background(Color.white)
+                                    .background(Color(.secondarySystemBackground))
                                     .clipShape(Circle())
                                     .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 5)
                                 
                                 Text(team.teamName)
                                     .font(.subheadline.pointSize(12))
-                                    .foregroundStyle(.black)
+                                    .foregroundStyle(.primary)
                             }
                             .padding(.horizontal, 5)
                         }

@@ -34,7 +34,7 @@ struct VisitCard: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -58,11 +58,11 @@ struct VisitCard: View {
             VStack {
                 Text(points.map(String.init) ?? "-")
                     .font(.numberStat)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
                 Text(team?.teamName ?? "---")
                     .font(.body)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
             }
             .padding(.leading, 70)
