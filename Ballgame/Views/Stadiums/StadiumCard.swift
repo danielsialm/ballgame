@@ -14,11 +14,11 @@ struct StadiumCard: View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(stadium.name)
-                    .font(.custom("AvenirNext-Bold", size: 26))
-                    .foregroundStyle(.black)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
                 
                 Text(locationText)
-                    .font(.custom("AvenirNext-Regular", size: 14))
+                    .font(.body)
                     .foregroundStyle(.gray)
             }
             
@@ -26,16 +26,16 @@ struct StadiumCard: View {
             
             if let league = stadium.league {
                 Text(league.displayName)
-                    .font(.custom("AvenirNext-DemiBold", size: 12))
+                    .font(.subheadline.pointSize(12))
                     .padding(.vertical, 6)
                     .padding(.horizontal, 10)
-                    .background(Color.black.opacity(0.08))
+                    .background(Color.primary.opacity(0.08))
                     .clipShape(Capsule())
             }
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -51,5 +51,5 @@ struct StadiumCard: View {
 
 
 #Preview {
-    StadiumCard(stadium: DataManager.shared.stadiums.first!)
+    StadiumCard(stadium: DataManager.shared.stadiums.first(where: { $0.id == "nfl-empower-field" })!)
 }

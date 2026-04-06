@@ -14,13 +14,13 @@ struct VisitCard: View {
         VStack(spacing: 2) {
             HStack {
                 Text(visit.date, format: Date.FormatStyle(date: .abbreviated, time: .omitted))
-                    .font(.custom("AvenirNext-Regular", size: 13))
+                    .font(.body)
                     .foregroundStyle(.gray)
                 
                 Spacer()
                 
                 Text(stadiumText)
-                    .font(.custom("AvenirNext-Regular", size: 14))
+                    .font(.body)
                     .foregroundStyle(.gray)
             }
             
@@ -34,7 +34,7 @@ struct VisitCard: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 10))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -57,12 +57,12 @@ struct VisitCard: View {
             }
             VStack {
                 Text(points.map(String.init) ?? "-")
-                    .font(.custom("AvenirNext-Heavy", size: 28))
-                    .foregroundStyle(.black)
+                    .font(.numberStat)
+                    .foregroundStyle(.primary)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
                 Text(team?.teamName ?? "---")
-                    .font(.custom("AvenirNext-Regular", size: 12))
-                    .foregroundStyle(.black)
+                    .font(.body)
+                    .foregroundStyle(.primary)
                     .scaleEffect(x: isAway ? -1 : 1, y: 1)
             }
             .padding(.leading, 70)

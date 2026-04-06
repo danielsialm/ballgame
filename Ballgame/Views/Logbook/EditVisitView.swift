@@ -50,17 +50,17 @@ struct EditVisitView: View {
                 Button("Cancel") {
                     dismiss()
                 }
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body.pointSize(16))
             }
             ToolbarItem(placement: .principal) {
-                Text("Edit Visit").font(.custom("AvenirNext-Bold", size: 25))
+                Text("Edit Visit").font(.smallTitle)
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     saveChanges()
                     dismiss()
                 }
-                .font(.custom("AvenirNext-DemiBold", size: 16))
+                .font(.subheadline.pointSize(16))
                 .foregroundStyle(.blue)
             }
         }
@@ -93,10 +93,11 @@ struct EditVisitView: View {
                 TextField("Away points", text: $awayPointsText)
                     .multilineTextAlignment(.trailing)
             }
-            .font(.custom("AvenirNext-Regular", size: 16))
+            .font(.body)
             .keyboardType(.numberPad)
             .padding(.horizontal, 10)
         }
+        .font(.subheadline)
     }
     
     private func parsePoints(_ text: String) -> UInt8? {
@@ -113,21 +114,23 @@ struct EditVisitView: View {
         Section("Companions") {
             ForEach(companions, id: \.self) { companion in
                 Text(companion)
+                    .font(.body)
             }
             .onDelete(perform: deleteCompanions)
 
             HStack {
-                TextField("Add companion", text: $newCompanionName)
-                    .font(.custom("AvenirNext-Regular", size: 16))
+                TextField("Add Companion", text: $newCompanionName)
+                    .font(.body)
                     .textInputAutocapitalization(.words)
                     .autocorrectionDisabled()
                 Button("Add") {
                     addCompanion()
                 }
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body)
                 .disabled(newCompanionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
         }
+        .font(.subheadline)
     }
     
     private func addCompanion() {
@@ -166,10 +169,11 @@ struct EditVisitView: View {
                     Image(systemName: "photo.badge.plus")
                     Text(isLoadingPhotos ? "Adding..." : "Add Photos")
                 }
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body)
             }
             .disabled(isLoadingPhotos)
         }
+        .font(.subheadline)
         .onChange(of: photoPickerItems) {
             loadPickedPhotos()
         }
@@ -233,8 +237,9 @@ struct EditVisitView: View {
     private var seatCard: some View {
         Section("Seat") {
             TextField("Seat", text: $seatText)
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body)
         }
+        .font(.subheadline)
     }
     
     // MARK: Notes
@@ -242,9 +247,10 @@ struct EditVisitView: View {
     private var notesCard: some View {
         Section("Notes") {
             TextEditor(text: $notesText)
-                .font(.custom("AvenirNext-Regular", size: 16))
+                .font(.body)
                 .frame(minHeight: 120)
         }
+        .font(.subheadline)
     }
 }
 

@@ -50,15 +50,15 @@ struct StadiumDetailView: View {
     private func statCard(title: String, value: String) -> some View {
         VStack(alignment: .center) {
             Text(value)
-                .font(.custom("AvenirNext-Bold", size: 18))
+                .font(.headline.pointSize(18))
             
             Text(title.uppercased())
-                .font(.custom("AvenirNext-DemiBold", size: 10))
+                .font(.subheadline.pointSize(13))
                 .foregroundStyle(.gray)
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(.white)
+        .background(Color(.secondarySystemBackground))
         .clipShape(.rect(cornerRadius: 20))
         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
     }
@@ -76,11 +76,12 @@ struct StadiumDetailView: View {
     private var teams: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Home Teams")
-                .font(.custom("AvenirNext-DemiBold", size: 18))
+                .font(.headline)
+                .padding(.leading, 5)
             
             if stadiumTeams.isEmpty {
                 Text("No teams available")
-                    .font(.custom("AvenirNext-Regular", size: 14))
+                    .font(.body)
                     .foregroundStyle(.gray)
             } else {
                 ScrollView(.horizontal) {
@@ -92,13 +93,13 @@ struct StadiumDetailView: View {
                                     .scaledToFit()
                                     .frame(width: 50, height: 50)
                                     .padding(15)
-                                    .background(Color.white)
+                                    .background(Color(.secondarySystemBackground))
                                     .clipShape(Circle())
                                     .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 5)
                                 
                                 Text(team.teamName)
-                                    .font(.custom("AvenirNext-DemiBold", size: 12))
-                                    .foregroundStyle(.black)
+                                    .font(.subheadline.pointSize(12))
+                                    .foregroundStyle(.primary)
                             }
                             .padding(.horizontal, 5)
                         }
