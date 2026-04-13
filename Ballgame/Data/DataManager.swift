@@ -9,43 +9,54 @@ import Foundation
 
 class DataManager {
     static let shared = DataManager()
-    var teams: [Team] = []
-    var stadiums: [Stadium] = []
+    let teams: [Team]
+    let stadiums: [Stadium]
     
     private init() {
-        loadTeams()
-        loadStadiums()
+        self.teams = Self.loadTeams()
+        self.stadiums = Self.loadStadiums()
     }
     
-    private func loadTeams() {
-        guard let url = Bundle.main.url(forResource: "Teams", withExtension: "json") else {
-            assertionFailure("Missing Teams.json in app bundle.")
-            teams = []
-            return
+    private static func loadTeams() -> [Team] {
+        let teamURLs = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: "Teams") ?? []
+        guard !teamURLs.isEmpty else {
+            assertionFailure("Missing team JSON files in Data/Teams.")
+            return []
         }
         
-        do {
-            let data = try Data(contentsOf: url)
-            teams = try JSONDecoder().decode([Team].self, from: data)
-        } catch {
-            assertionFailure("Failed to load Teams.json: \(error)")
-            teams = []
+        var loadedTeams: [Team] = []
+        
+        for url in teamURLs {
+            do {
+                let data = try Data(contentsOf: url)
+                loadedTeams += try JSONDecoder().decode([Team].self, from: data)
+            } catch {
+                assertionFailure("Failed to load \(url.lastPathComponent): \(error)")
+            }
         }
+        
+        return loadedTeams
     }
     
-    private func loadStadiums() {
-        guard let url = Bundle.main.url(forResource: "Stadiums", withExtension: "json") else {
-            assertionFailure("Missing Stadiums.json in app bundle.")
-            stadiums = []
-            return
+    private static func loadStadiums() -> [Stadium] {
+        let stadiumURLs = Bundle.main.urls(forResourcesWithExtension: "json", subdirectory: "Stadiums") ?? []
+        
+        guard !stadiumURLs.isEmpty else {
+            assertionFailure("Missing stadium JSON files in Data/Stadiums.")
+            return []
         }
         
-        do {
-            let data = try Data(contentsOf: url)
-            stadiums = try JSONDecoder().decode([Stadium].self, from: data)
-        } catch {
-            assertionFailure("Failed to load Stadiums.json: \(error)")
-            stadiums = []
+        var loadedStadiums: [Stadium] = []
+        
+        for url in stadiumURLs {
+            do {
+                let data = try Data(contentsOf: url)
+                loadedStadiums += try JSONDecoder().decode([Stadium].self, from: data)
+            } catch {
+                assertionFailure("Failed to load Stadiums.json: \(error)")
+            }
         }
+        
+        return loadedStadiums
     }
 }
