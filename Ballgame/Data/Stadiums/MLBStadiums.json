@@ -1,0 +1,47 @@
+[
+    {
+      "id": "mlb-fenway-park",
+      "name": "Fenway Park",
+      "city": "Boston",
+      "state": "MA",
+      "placeId": "I9DB342A7B1DB6672",
+      "league": "MLB",
+      "capacity": 37755
+    },
+    {
+      "id": "mlb-wrigley-field",
+      "name": "Wrigley Field",
+      "city": "Chicago",
+      "state": "IL",
+      "placeId": "IE175B1C48A249082",
+      "league": "MLB",
+      "capacity": 41649
+    },
+    {
+      "id": "mlb-globe-life-field",
+      "name": "Globe Life Field",
+      "city": "Arlington",
+      "state": "TX",
+      "placeId": "I4407EB65C7F4FBD3",
+      "league": "MLB",
+      "capacity": 40300
+    },
+    {
+      "id": "mlb-dodger-stadium",
+      "name": "Dodger Stadium",
+      "city": "Los Angeles",
+      "state": "CA",
+      "placeId": "IEF9F7C11119158BE",
+      "league": "MLB",
+      "capacity": 56000
+    },
+    {
+      "id": "mlb-yankee-stadium",
+      "name": "Yankee Stadium",
+      "city": "Bronx",
+      "state": "NY",
+      "placeId": "IC57FD8682B4BD4F",
+      "league": "MLB",
+      "capacity": 49642
+    }
+]
