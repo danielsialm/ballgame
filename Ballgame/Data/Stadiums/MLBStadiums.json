@@ -1,6 +1,6 @@
 [
     {
-      "id": "mlb-fenway-park",
+      "id": "mlb-fenway",
       "name": "Fenway Park",
       "city": "Boston",
       "state": "MA",
@@ -9,7 +9,7 @@
       "capacity": 37755
     },
     {
-      "id": "mlb-wrigley-field",
+      "id": "mlb-wrigley",
       "name": "Wrigley Field",
       "city": "Chicago",
       "state": "IL",
@@ -18,7 +18,7 @@
       "capacity": 41649
     },
     {
-      "id": "mlb-globe-life-field",
+      "id": "mlb-globe-life",
       "name": "Globe Life Field",
       "city": "Arlington",
       "state": "TX",
@@ -27,7 +27,7 @@
       "capacity": 40300
     },
     {
-      "id": "mlb-dodger-stadium",
+      "id": "mlb-dodger",
       "name": "Dodger Stadium",
       "city": "Los Angeles",
       "state": "CA",
@@ -36,7 +36,7 @@
       "capacity": 56000
     },
     {
-      "id": "mlb-yankee-stadium",
+      "id": "mlb-yankee",
       "name": "Yankee Stadium",
       "city": "Bronx",
       "state": "NY",

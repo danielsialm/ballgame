@@ -1,12 +1,48 @@
 [
     {
+      "id": "mlb-ari",
+      "name": "Arizona Diamondbacks",
+      "teamCode": "ari",
+      "teamName": "Diamondbacks",
+      "city": "Phoenix",
+      "league": "MLB",
+      "stadiumId": "mlb-chase"
+    },
+    {
+      "id": "mlb-ath",
+      "name": "Athletics",
+      "teamCode": "ath",
+      "teamName": "Athletics",
+      "city": "West Sacramento",
+      "league": "MLB",
+      "stadiumId": "mlb-sutter-health"
+    },
+    {
+      "id": "mlb-atl",
+      "name": "Atlanta Braves",
+      "teamCode": "atl",
+      "teamName": "Braves",
+      "city": "Atlanta",
+      "league": "MLB",
+      "stadiumId": "mlb-truist"
+    },
+    {
+      "id": "mlb-bal",
+      "name": "Baltimore Orioles",
+      "teamCode": "bal",
+      "teamName": "Orioles",
+      "city": "Baltimore",
+      "league": "MLB",
+      "stadiumId": "mlb-oriole"
+    },
+    {
       "id": "mlb-bos",
       "name": "Boston Red Sox",
       "teamCode": "bos",
       "teamName": "Red Sox",
       "city": "Boston",
       "league": "MLB",
-      "stadiumId": "mlb-fenway-park"
+      "stadiumId": "mlb-fenway"
     },
     {
       "id": "mlb-chc",
@@ -15,34 +51,34 @@
       "teamName": "Cubs",
       "city": "Chicago",
       "league": "MLB",
-      "stadiumId": "mlb-wrigley-field"
+      "stadiumId": "mlb-wrigley"
     },
     {
-      "id": "mlb-tex",
-      "name": "Texas Rangers",
-      "teamCode": "tex",
-      "teamName": "Rangers",
-      "city": "Arlington",
+      "id": "mlb-chw",
+      "name": "Chicago White Sox",
+      "teamCode": "chw",
+      "teamName": "White Sox",
+      "city": "Chicago",
       "league": "MLB",
-      "stadiumId": "mlb-globe-life-field"
+      "stadiumId": "mlb-rate"
     },
     {
-      "id": "mlb-lad",
-      "name": "Los Angeles Dodgers",
-      "teamCode": "lad",
-      "teamName": "Dodgers",
-      "city": "Los Angeles",
+      "id": "mlb-cin",
+      "name": "Cincinnati Reds",
+      "teamCode": "cin",
+      "teamName": "Reds",
+      "city": "Cincinnati",
       "league": "MLB",
-      "stadiumId": "mlb-dodger-stadium"
+      "stadiumId": "mlb-great-american"
     },
     {
-      "id": "mlb-nyy",
-      "name": "New York Yankees",
-      "teamCode": "nyy",
-      "teamName": "Yankees",
-      "city": "New York",
+      "id": "mlb-cle",
+      "name": "Cleveland Guardians",
+      "teamCode": "cle",
+      "teamName": "Guardians",
+      "city": "Cleveland",
       "league": "MLB",
-      "stadiumId": "mlb-yankee-stadium"
+      "stadiumId": "mlb-progressive"
     },
     {
       "id": "mlb-col",
@@ -51,6 +87,186 @@
       "teamName": "Rockies",
       "city": "Denver",
       "league": "MLB",
-      "stadiumId": "mlb-coors-field"
+      "stadiumId": "mlb-coors"
     },
+    {
+      "id": "mlb-det",
+      "name": "Detroit Tigers",
+      "teamCode": "det",
+      "teamName": "Tigers",
+      "city": "Detroit",
+      "league": "MLB",
+      "stadiumId": "mlb-comerica"
+    },
+    {
+      "id": "mlb-hou",
+      "name": "Houston Astros",
+      "teamCode": "hou",
+      "teamName": "Astros",
+      "city": "Houston",
+      "league": "MLB",
+      "stadiumId": "mlb-daikin"
+    },
+    {
+      "id": "mlb-kcr",
+      "name": "Kansas City Royals",
+      "teamCode": "kcr",
+      "teamName": "Royals",
+      "city": "Kansas City",
+      "league": "MLB",
+      "stadiumId": "mlb-kauffman"
+    },
+    {
+      "id": "mlb-laa",
+      "name": "Los Angeles Angels",
+      "teamCode": "laa",
+      "teamName": "Angles",
+      "city": "Anaheim",
+      "league": "MLB",
+      "stadiumId": "mlb-angel"
+    },
+    {
+      "id": "mlb-lad",
+      "name": "Los Angeles Dodgers",
+      "teamCode": "lad",
+      "teamName": "Dodgers",
+      "city": "Los Angeles",
+      "league": "MLB",
+      "stadiumId": "mlb-dodger"
+    },
+    {
+      "id": "mlb-mia",
+      "name": "Miami Marlins",
+      "teamCode": "mia",
+      "teamName": "Marlins",
+      "city": "Miami",
+      "league": "MLB",
+      "stadiumId": "mlb-loan-depot"
+    },
+    {
+      "id": "mlb-mil",
+      "name": "Milwaukee Brewers",
+      "teamCode": "mil",
+      "teamName": "Brewers",
+      "city": "Milwaukee",
+      "league": "MLB",
+      "stadiumId": "mlb-american-family"
+    },
+    {
+      "id": "mlb-min",
+      "name": "Minnesota Twins",
+      "teamCode": "min",
+      "teamName": "Twins",
+      "city": "Minneapolis",
+      "league": "MLB",
+      "stadiumId": "mlb-target"
+    },
+    {
+      "id": "mlb-nym",
+      "name": "New York Mets",
+      "teamCode": "nym",
+      "teamName": "Mets",
+      "city": "New York",
+      "league": "MLB",
+      "stadiumId": "mlb-citi"
+    },
+    {
+      "id": "mlb-nyy",
+      "name": "New York Yankees",
+      "teamCode": "nyy",
+      "teamName": "Yankees",
+      "city": "New York",
+      "league": "MLB",
+      "stadiumId": "mlb-yankee"
+    },
+    {
+      "id": "mlb-phi",
+      "name": "Philadelphia Phillies",
+      "teamCode": "phi",
+      "teamName": "Phillies",
+      "city": "Philadelphia",
+      "league": "MLB",
+      "stadiumId": "mlb-citizens-bank"
+    },
+    {
+      "id": "mlb-pit",
+      "name": "Pittsburgh Pirates",
+      "teamCode": "pit",
+      "teamName": "Pirates",
+      "city": "Pitsburgh",
+      "league": "MLB",
+      "stadiumId": "mlb-pit"
+    },
+    {
+      "id": "mlb-sdp",
+      "name": "San Diego Padres",
+      "teamCode": "sdp",
+      "teamName": "Padres",
+      "city": "San Diego",
+      "league": "MLB",
+      "stadiumId": "mlb-petco"
+    },
+    {
+      "id": "mlb-sfg",
+      "name": "San Francisco Giants",
+      "teamCode": "sfg",
+      "teamName": "Giants",
+      "city": "San Francisco",
+      "league": "MLB",
+      "stadiumId": "mlb-oracle"
+    },
+    {
+      "id": "mlb-sea",
+      "name": "Seattle Mariners",
+      "teamCode": "sea",
+      "teamName": "Mariners",
+      "city": "Seattle",
+      "league": "MLB",
+      "stadiumId": "mlb-t-mobile"
+    },
+    {
+      "id": "mlb-stl",
+      "name": "St. Louis Cardinals",
+      "teamCode": "stl",
+      "teamName": "Cardinals",
+      "city": "St. Louis",
+      "league": "MLB",
+      "stadiumId": "mlb-busch"
+    },
+    {
+      "id": "mlb-tbr",
+      "name": "Tampa Bay Rays",
+      "teamCode": "tbr",
+      "teamName": "Rays",
+      "city": "St. Petersburg",
+      "league": "MLB",
+      "stadiumId": "mlb-tropicana"
+    },
+    {
+      "id": "mlb-tex",
+      "name": "Texas Rangers",
+      "teamCode": "tex",
+      "teamName": "Rangers",
+      "city": "Arlington",
+      "league": "MLB",
+      "stadiumId": "mlb-globe-life"
+    },
+    {
+      "id": "mlb-tor",
+      "name": "Toronto Blue Jays",
+      "teamCode": "tor",
+      "teamName": "Blue Jays",
+      "city": "Toronto",
+      "league": "MLB",
+      "stadiumId": "mlb-rogers"
+    },
+    {
+      "id": "mlb-wsn",
+      "name": "Washington Nationals",
+      "teamCode": "wsn",
+      "teamName": "Nationals",
+      "city": "Washington DC",
+      "league": "MLB",
+      "stadiumId": "mlb-nationals"
+    }
 ]
