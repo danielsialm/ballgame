@@ -166,7 +166,7 @@
       "name": "New York Mets",
       "teamCode": "nym",
       "teamName": "Mets",
-      "city": "New York",
+      "city": "Flushing",
       "league": "MLB",
       "stadiumId": "mlb-citi"
     },
@@ -175,7 +175,7 @@
       "name": "New York Yankees",
       "teamCode": "nyy",
       "teamName": "Yankees",
-      "city": "New York",
+      "city": "Bronx",
       "league": "MLB",
       "stadiumId": "mlb-yankee"
     },

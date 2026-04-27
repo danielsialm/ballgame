@@ -1,30 +1,84 @@
 [
     {
-      "id": "mlb-fenway",
-      "name": "Fenway Park",
-      "city": "Boston",
-      "state": "MA",
-      "placeId": "I9DB342A7B1DB6672",
+      "id": "mlb-american-family",
+      "name": "American Family Field",
+      "city": "Milwaukee",
+      "state": "WI",
+      "placeId": "IB951F7513169270E",
       "league": "MLB",
-      "capacity": 37755
+      "capacity": 41900
     },
     {
-      "id": "mlb-wrigley",
-      "name": "Wrigley Field",
-      "city": "Chicago",
-      "state": "IL",
-      "placeId": "IE175B1C48A249082",
+      "id": "mlb-angel",
+      "name": "Angel Stadium",
+      "city": "Anaheim",
+      "state": "CA",
+      "placeId": "I1652BA6DD14B569D",
       "league": "MLB",
-      "capacity": 41649
+      "capacity": 45517
     },
     {
-      "id": "mlb-globe-life",
-      "name": "Globe Life Field",
-      "city": "Arlington",
+      "id": "mlb-busch",
+      "name": "Busch Stadium",
+      "city": "St. Louis",
+      "state": "MO",
+      "placeId": "IBC7534C4B78B84DB",
+      "league": "MLB",
+      "capacity": 44383
+    },
+    {
+      "id": "mlb-chase",
+      "name": "Chase Field",
+      "city": "Phoenix",
+      "state": "AZ",
+      "placeId": "I9A7ED80FDA638880",
+      "league": "MLB",
+      "capacity": 48330
+    },
+    {
+      "id": "mlb-citi",
+      "name": "Citi Field",
+      "city": "Flushing",
+      "state": "NY",
+      "placeId": "I113617765FB06FB5",
+      "league": "MLB",
+      "capacity": 41922
+    },
+    {
+      "id": "mlb-citizens-bank",
+      "name": "Citizens Bank Park",
+      "city": "Philadelphia",
+      "state": "PA",
+      "placeId": "IE909DF335018E9B5",
+      "league": "MLB",
+      "capacity": 42901
+    },
+    {
+      "id": "mlb-comerica",
+      "name": "Comerica Park",
+      "city": "Detroit",
+      "state": "MI",
+      "placeId": "IB301C7E12E939DBE",
+      "league": "MLB",
+      "capacity": 41083
+    },
+    {
+      "id": "mlb-coors",
+      "name": "Coors Field",
+      "city": "Denver",
+      "state": "CO",
+      "placeId": "I9614832ACD05FD99",
+      "league": "MLB",
+      "capacity": 46897
+    },
+    {
+      "id": "mlb-daikin",
+      "name": "Daikin Park",
+      "city": "Houston",
       "state": "TX",
-      "placeId": "I4407EB65C7F4FBD3",
+      "placeId": "IF61FFD06C05AA9E4",
       "league": "MLB",
-      "capacity": 40300
+      "capacity": 41168
     },
     {
       "id": "mlb-dodger",
@@ -36,12 +90,184 @@
       "capacity": 56000
     },
     {
+      "id": "mlb-fenway",
+      "name": "Fenway Park",
+      "city": "Boston",
+      "state": "MA",
+      "placeId": "I9DB342A7B1DB6672",
+      "league": "MLB",
+      "capacity": 37755
+    },
+    {
+      "id": "mlb-globe-life",
+      "name": "Globe Life Field",
+      "city": "Arlington",
+      "state": "TX",
+      "placeId": "I4407EB65C7F4FBD3",
+      "league": "MLB",
+      "capacity": 40300
+    },
+    {
+      "id": "mlb-great-american",
+      "name": "Great American Ball Park",
+      "city": "Cincinnati",
+      "state": "OH",
+      "placeId": "I8D60B3CD6E7D5971",
+      "league": "MLB",
+      "capacity": 43500
+    },
+    {
+      "id": "mlb-kauffman",
+      "name": "Kauffman Stadium",
+      "city": "Kansas City",
+      "state": "MO",
+      "placeId": "IA12E066DD2001976",
+      "league": "MLB",
+      "capacity": 37903
+    },
+    {
+      "id": "mlb-loan-depot",
+      "name": "LoanDepot Park",
+      "city": "Miami",
+      "state": "FL",
+      "placeId": "IA96DD4A08E81A6D3",
+      "league": "MLB",
+      "capacity": 36742
+    },
+    {
+      "id": "mlb-nationals",
+      "name": "Nationals Park",
+      "city": "Washington",
+      "state": "DC",
+      "placeId": "IE3E22353E898C02E",
+      "league": "MLB",
+      "capacity": 41373
+    },
+    {
+      "id": "mlb-oracle",
+      "name": "Oracle Park",
+      "city": "San Francisco",
+      "state": "CA",
+      "placeId": "I4E4E1F6353362CA4",
+      "league": "MLB",
+      "capacity": 41331
+    },
+    {
+      "id": "mlb-oriole",
+      "name": "Oriole Park",
+      "city": "Baltimore",
+      "state": "MD",
+      "placeId": "I74E681546C1A4CB1",
+      "league": "MLB",
+      "capacity": 42455
+    },
+    {
+      "id": "mlb-petco",
+      "name": "Petco Park",
+      "city": "San Diego",
+      "state": "CA",
+      "placeId": "I1FDBB048DEC92F03",
+      "league": "MLB",
+      "capacity": 39860
+    },
+    {
+      "id": "mlb-pnc",
+      "name": "PNC Park",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "placeId": "I85B24CA189F66EB8",
+      "league": "MLB",
+      "capacity": 38747
+    },
+    {
+      "id": "mlb-progressive",
+      "name": "Progressive Field",
+      "city": "Cleveland",
+      "state": "OH",
+      "placeId": "IEE334205AA35BF76",
+      "league": "MLB",
+      "capacity": 34820
+    },
+    {
+      "id": "mlb-rate",
+      "name": "Rate Field",
+      "city": "Chicago",
+      "state": "IL",
+      "placeId": "I15F6134E11418850",
+      "league": "MLB",
+      "capacity": 40615
+    },
+    {
+      "id": "mlb-rogers",
+      "name": "Rogers Centre",
+      "city": "Toronto",
+      "state": "ON",
+      "placeId": "I3A183CD0E5A01B2B",
+      "league": "MLB",
+      "capacity": 39150
+    },
+    {
+      "id": "mlb-sutter-health",
+      "name": "Sutter Health Park",
+      "city": "West Sacramento",
+      "state": "CA",
+      "placeId": "ID5CF9114C99C2939",
+      "league": "MLB",
+      "capacity": 13416
+    },
+    {
+      "id": "mlb-t-mobile",
+      "name": "T-Mobile Park",
+      "city": "Seattle",
+      "state": "WA",
+      "placeId": "IE3AB2D668A3F2E8C",
+      "league": "MLB",
+      "capacity": 47929
+    },
+    {
+      "id": "mlb-target",
+      "name": "Target Field",
+      "city": "Minneapolis",
+      "state": "MN",
+      "placeId": "I65824D62E367BEF1",
+      "league": "MLB",
+      "capacity": 38544
+    },
+    {
+      "id": "mlb-tropicana",
+      "name": "Tropicana Field",
+      "city": "St. Petersburg",
+      "state": "FL",
+      "placeId": "ICAC68660CD9F8935",
+      "league": "MLB",
+      "capacity": 25000
+    },
+    {
+      "id": "mlb-truist",
+      "name": "Truist Park",
+      "city": "Atlanta",
+      "state": "GA",
+      "placeId": "I885753690355E0A0",
+      "league": "MLB",
+      "capacity": 41084
+    },
+    {
+      "id": "mlb-wrigley",
+      "name": "Wrigley Field",
+      "city": "Chicago",
+      "state": "IL",
+      "placeId": "IE175B1C48A249082",
+      "league": "MLB",
+      "capacity": 41649
+    },
+    
+    {
       "id": "mlb-yankee",
       "name": "Yankee Stadium",
       "city": "Bronx",
       "state": "NY",
       "placeId": "IC57FD8682B4BD4F",
       "league": "MLB",
-      "capacity": 49642
+      "capacity": 46537
     }
 ]

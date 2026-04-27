@@ -36,15 +36,6 @@
     "capacity": 76416
   },
   {
-    "id": "mlb-coors-field",
-    "name": "Coors Field",
-    "city": "Denver",
-    "state": "CO",
-    "placeId": "I9614832ACD05FD99",
-    "league": "MLB",
-    "capacity": 50480
-  },
-  {
     "id": "nfl-empower-field",
     "name": "Empower Field at Mile High",
     "city": "Denver",
