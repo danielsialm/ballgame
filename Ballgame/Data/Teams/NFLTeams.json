@@ -24,7 +24,7 @@
         "teamName": "Ravens",
         "city": "Baltimore",
         "league": "NFL",
-        "stadiumId": "nfl-m&t-bank"
+        "stadiumId": "nfl-mt-bank"
     },
     {
         "id": "nfl-buf",
@@ -78,7 +78,7 @@
         "teamName": "Cowboys",
         "city": "Arlington",
         "league": "NFL",
-        "stadiumId": "nfl-at&t"
+        "stadiumId": "nfl-att"
     },
     {
         "id": "nfl-den",
