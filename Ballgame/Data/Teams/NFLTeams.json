@@ -1,56 +1,290 @@
 [
-  {
-    "id": "nfl-dal",
-    "name": "Dallas Cowboys",
-    "teamCode": "dal",
-    "teamName": "Cowboys",
-    "city": "Arlington",
-    "league": "NFL",
-    "stadiumId": "nfl-att-stadium"
-  },
-  {
-    "id": "nfl-kc",
-    "name": "Kansas City Chiefs",
-    "teamCode": "kc",
-    "teamName": "Chiefs",
-    "city": "Kansas City",
-    "league": "NFL",
-    "stadiumId": "nfl-arrowhead-stadium"
-  },
-  {
-    "id": "nfl-den",
-    "name": "Denver Broncos",
-    "teamCode": "den",
-    "teamName": "Broncos",
-    "city": "Denver",
-    "league": "NFL",
-    "stadiumId": "nfl-empower-field"
-  },
-  {
-    "id": "nfl-buf",
-    "name": "Buffalo Bills",
-    "teamCode": "buf",
-    "teamName": "Bills",
-    "city": "Buffalo",
-    "league": "NFL",
-    "stadiumId": "nfl-highmark-stadium"
-  },
-  {
-    "id": "nfl-gb",
-    "name": "Green Bay Packers",
-    "teamCode": "gb",
-    "teamName": "Packers",
-    "city": "Green Bay",
-    "league": "NFL",
-    "stadiumId": "nfl-lambeau-field"
-  },
-  {
-    "id": "nfl-chi",
-    "name": "Chicago Bears",
-    "teamCode": "chi",
-    "teamName": "Bears",
-    "city": "Chicago",
-    "league": "NFL",
-    "stadiumId": "nfl-soldier-field"
-  }
+    {
+        "id": "nfl-ari",
+        "name": "Arizona Cardinals",
+        "teamCode": "ari",
+        "teamName": "Cardinals",
+        "city": "Glendale",
+        "league": "NFL",
+        "stadiumId": "nfl-state-farm"
+    },
+    {
+        "id": "nfl-atl",
+        "name": "Atlanta Falcons",
+        "teamCode": "atl",
+        "teamName": "Falcons",
+        "city": "Atlanta",
+        "league": "NFL",
+        "stadiumId": "nfl-mercedes-benz"
+    },
+    {
+        "id": "nfl-bal",
+        "name": "Baltimore Ravens",
+        "teamCode": "bal",
+        "teamName": "Ravens",
+        "city": "Baltimore",
+        "league": "NFL",
+        "stadiumId": "nfl-m&t-bank"
+    },
+    {
+        "id": "nfl-buf",
+        "name": "Buffalo Bills",
+        "teamCode": "buf",
+        "teamName": "Bills",
+        "city": "Orchard Park",
+        "league": "NFL",
+        "stadiumId": "nfl-highmark"
+    },
+    {
+        "id": "nfl-car",
+        "name": "Carolina Panthers",
+        "teamCode": "car",
+        "teamName": "Panthers",
+        "city": "Charlotte",
+        "league": "NFL",
+        "stadiumId": "nfl-bank-of-america"
+    },
+    {
+        "id": "nfl-chi",
+        "name": "Chicago Bears",
+        "teamCode": "chi",
+        "teamName": "Bears",
+        "city": "Chicago",
+        "league": "NFL",
+        "stadiumId": "nfl-soldier"
+    },
+    {
+        "id": "nfl-cin",
+        "name": "Cincinnati Bengals",
+        "teamCode": "cin",
+        "teamName": "Bengals",
+        "city": "Cincinnati",
+        "league": "NFL",
+        "stadiumId": "nfl-paycor"
+    },
+    {
+        "id": "nfl-cle",
+        "name": "Cleveland Browns",
+        "teamCode": "cle",
+        "teamName": "Browns",
+        "city": "Cleveland",
+        "league": "NFL",
+        "stadiumId": "nfl-huntington-bank"
+    },
+    {
+        "id": "nfl-dal",
+        "name": "Dallas Cowboys",
+        "teamCode": "dal",
+        "teamName": "Cowboys",
+        "city": "Arlington",
+        "league": "NFL",
+        "stadiumId": "nfl-at&t"
+    },
+    {
+        "id": "nfl-den",
+        "name": "Denver Broncos",
+        "teamCode": "den",
+        "teamName": "Broncos",
+        "city": "Denver",
+        "league": "NFL",
+        "stadiumId": "nfl-empower"
+    },
+    {
+        "id": "nfl-det",
+        "name": "Detroit Lions",
+        "teamCode": "det",
+        "teamName": "Lions",
+        "city": "Detroit",
+        "league": "NFL",
+        "stadiumId": "nfl-ford"
+    },
+    {
+        "id": "nfl-gb",
+        "name": "Green Bay Packers",
+        "teamCode": "gb",
+        "teamName": "Packers",
+        "city": "Green Bay",
+        "league": "NFL",
+        "stadiumId": "nfl-lambeau"
+    },
+    {
+        "id": "nfl-hou",
+        "name": "Houston Texans",
+        "teamCode": "hou",
+        "teamName": "Texans",
+        "city": "Houston",
+        "league": "NFL",
+        "stadiumId": "nfl-nrg"
+    },
+    {
+        "id": "nfl-ind",
+        "name": "Indianapolis Colts",
+        "teamCode": "ind",
+        "teamName": "Colts",
+        "city": "Indianapolis",
+        "league": "NFL",
+        "stadiumId": "nfl-lucas-oil"
+    },
+    {
+        "id": "nfl-jax",
+        "name": "Jacksonville Jaguars",
+        "teamCode": "jax",
+        "teamName": "Jaguars",
+        "city": "Jacksonville",
+        "league": "NFL",
+        "stadiumId": "nfl-everbank"
+    },
+    {
+        "id": "nfl-kc",
+        "name": "Kansas City Chiefs",
+        "teamCode": "kc",
+        "teamName": "Chiefs",
+        "city": "Kansas City",
+        "league": "NFL",
+        "stadiumId": "nfl-arrowhead"
+    },
+    {
+        "id": "nfl-lv",
+        "name": "Las Vegas Raiders",
+        "teamCode": "lv",
+        "teamName": "Raiders",
+        "city": "Las Vegas",
+        "league": "NFL",
+        "stadiumId": "nfl-allegiant"
+    },
+    {
+        "id": "nfl-lac",
+        "name": "Los Angeles Chargers",
+        "teamCode": "lac",
+        "teamName": "Chargers",
+        "city": "Inglewood",
+        "league": "NFL",
+        "stadiumId": "nfl-sofi"
+    },
+    {
+        "id": "nfl-lar",
+        "name": "Los Angeles Rams",
+        "teamCode": "lar",
+        "teamName": "Rams",
+        "city": "Inglewood",
+        "league": "NFL",
+        "stadiumId": "nfl-sofi"
+    },
+    {
+        "id": "nfl-mia",
+        "name": "Miami Dolphins",
+        "teamCode": "mia",
+        "teamName": "Dolphins",
+        "city": "Miami Gardens",
+        "league": "NFL",
+        "stadiumId": "nfl-hard-rock"
+    },
+    {
+        "id": "nfl-min",
+        "name": "Minnesota Vikings",
+        "teamCode": "min",
+        "teamName": "Vikings",
+        "city": "Minneapolis",
+        "league": "NFL",
+        "stadiumId": "nfl-us-bank"
+    },
+    {
+        "id": "nfl-ne",
+        "name": "New England Patriots",
+        "teamCode": "ne",
+        "teamName": "Patriots",
+        "city": "Foxborough",
+        "league": "NFL",
+        "stadiumId": "nfl-gillette"
+    },
+    {
+        "id": "nfl-no",
+        "name": "New Orleans Saints",
+        "teamCode": "no",
+        "teamName": "Saints",
+        "city": "New Orleans",
+        "league": "NFL",
+        "stadiumId": "nfl-caesars"
+    },
+    {
+        "id": "nfl-nyg",
+        "name": "New York Giants",
+        "teamCode": "nyg",
+        "teamName": "Giants",
+        "city": "East Rutherford",
+        "league": "NFL",
+        "stadiumId": "nfl-metlife"
+    },
+    {
+        "id": "nfl-nyj",
+        "name": "New York Jets",
+        "teamCode": "nyj",
+        "teamName": "Jets",
+        "city": "East Rutherford",
+        "league": "NFL",
+        "stadiumId": "nfl-metlife"
+    },
+    {
+        "id": "nfl-phi",
+        "name": "Philadelphia Eagles",
+        "teamCode": "phi",
+        "teamName": "Eagles",
+        "city": "Philadelphia",
+        "league": "NFL",
+        "stadiumId": "nfl-lincoln-financial"
+    },
+    {
+        "id": "nfl-pit",
+        "name": "Pittsburgh Steelers",
+        "teamCode": "pit",
+        "teamName": "Steelers",
+        "city": "Pittsburgh",
+        "league": "NFL",
+        "stadiumId": "nfl-acrisure"
+    },
+    {
+        "id": "nfl-sf",
+        "name": "San Francisco 49ers",
+        "teamCode": "sf",
+        "teamName": "49ers",
+        "city": "Santa Clara",
+        "league": "NFL",
+        "stadiumId": "nfl-levis"
+    },
+    {
+        "id": "nfl-sea",
+        "name": "Seattle Seahawks",
+        "teamCode": "sea",
+        "teamName": "Seahawks",
+        "city": "Seattle",
+        "league": "NFL",
+        "stadiumId": "nfl-lumen"
+    },
+    {
+        "id": "nfl-tb",
+        "name": "Tampa Bay Buccaneers",
+        "teamCode": "tb",
+        "teamName": "Buccaneers",
+        "city": "Tampa",
+        "league": "NFL",
+        "stadiumId": "nfl-raymond-james"
+    },
+    {
+        "id": "nfl-ten",
+        "name": "Tennessee Titans",
+        "teamCode": "ten",
+        "teamName": "Titans",
+        "city": "Nashville",
+        "league": "NFL",
+        "stadiumId": "nfl-nissan"
+    },
+    {
+        "id": "nfl-was",
+        "name": "Washington Commanders",
+        "teamCode": "was",
+        "teamName": "Commanders",
+        "city": "Landover",
+        "league": "NFL",
+        "stadiumId": "nfl-northwest"
+    }
 ]
