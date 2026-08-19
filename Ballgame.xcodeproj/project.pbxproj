@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		65ABCB772F8D5A6500A87CC4 /* Teams in Resources */ = {isa = PBXBuildFile; fileRef = 65ABCB762F8D5A6500A87CC4 /* Teams */; };
+		65ABCB792F8D5A7600A87CC4 /* Stadiums in Resources */ = {isa = PBXBuildFile; fileRef = 65ABCB782F8D5A7600A87CC4 /* Stadiums */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		658C7FD82ED0C4AC00EF7975 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +32,29 @@
 		658C7FC82ED0C4A900EF7975 /* Ballgame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballgame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		658C7FD72ED0C4AC00EF7975 /* BallgameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BallgameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		658C7FE12ED0C4AC00EF7975 /* BallgameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BallgameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65ABCB762F8D5A6500A87CC4 /* Teams */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Teams; path = Ballgame/Data/Teams; sourceTree = "<group>"; };
+		65ABCB782F8D5A7600A87CC4 /* Stadiums */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stadiums; path = Ballgame/Data/Stadiums; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		65ABCB632F8D58FA00A87CC4 /* Exceptions for "Ballgame" folder in "Ballgame" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Data/Stadiums/MLBStadiums.json,
+				Data/Stadiums/NFLStadiums.json,
+				Data/Teams/MLBTeams.json,
+				Data/Teams/NFLTeams.json,
+			);
+			target = 658C7FC72ED0C4A900EF7975 /* Ballgame */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		658C7FCA2ED0C4A900EF7975 /* Ballgame */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				65ABCB632F8D58FA00A87CC4 /* Exceptions for "Ballgame" folder in "Ballgame" target */,
+			);
 			path = Ballgame;
 			sourceTree = "<group>";
 		};
@@ -75,6 +98,8 @@
 		658C7FBF2ED0C4A900EF7975 = {
 			isa = PBXGroup;
 			children = (
+				65ABCB782F8D5A7600A87CC4 /* Stadiums */,
+				65ABCB762F8D5A6500A87CC4 /* Teams */,
 				658C7FCA2ED0C4A900EF7975 /* Ballgame */,
 				658C7FDA2ED0C4AC00EF7975 /* BallgameTests */,
 				658C7FE42ED0C4AC00EF7975 /* BallgameUITests */,
@@ -212,6 +237,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65ABCB792F8D5A7600A87CC4 /* Stadiums in Resources */,
+				65ABCB772F8D5A6500A87CC4 /* Teams in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

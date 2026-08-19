@@ -1,0 +1,272 @@
+[
+    {
+        "id": "nfl-acrisure",
+        "name": "Acrisure Stadium",
+        "city": "Pittsburgh",
+        "state": "PA",
+        "placeId": "IC52D20667FCEFA2B",
+        "league": "NFL",
+        "capacity": 68400
+    },
+    {
+        "id": "nfl-allegiant",
+        "name": "Allegiant Stadium",
+        "city": "Las Vegas",
+        "state": "NV",
+        "placeId": "IAC1AA0A1547F746E",
+        "league": "NFL",
+        "capacity": 65000
+    },
+    {
+        "id": "nfl-arrowhead",
+        "name": "Arrowhead Stadium",
+        "city": "Kansas City",
+        "state": "MO",
+        "placeId": "IF0B10C4441259C2A",
+        "league": "NFL",
+        "capacity": 76416
+    },
+    {
+        "id": "nfl-att",
+        "name": "AT&T Stadium",
+        "city": "Arlington",
+        "state": "TX",
+        "placeId": "ID92D41D5FB45BDC9",
+        "league": "NFL",
+        "capacity": 80000
+    },
+    {
+        "id": "nfl-bank-of-america",
+        "name": "Bank of America Stadium",
+        "city": "Charlotte",
+        "state": "NC",
+        "placeId": "IFB5CD13911CD1F58",
+        "league": "NFL",
+        "capacity": 75523
+    },
+    {
+        "id": "nfl-caesars",
+        "name": "Caesars Superdome",
+        "city": "New Orleans",
+        "state": "LA",
+        "placeId": "IBEC1266714A7EF86",
+        "league": "NFL",
+        "capacity": 73208
+    },
+    {
+        "id": "nfl-empower",
+        "name": "Empower Field at Mile High",
+        "city": "Denver",
+        "state": "CO",
+        "placeId": "I355FD6AF434A26F3",
+        "league": "NFL",
+        "capacity": 76125
+    },
+    {
+        "id": "nfl-everbank",
+        "name": "EverBank Stadium",
+        "city": "Jacksonville",
+        "state": "FL",
+        "placeId": "I5DC733ED4E5AC17F",
+        "league": "NFL",
+        "capacity": 67814
+    },
+    {
+        "id": "nfl-ford",
+        "name": "Ford Field",
+        "city": "Detroit",
+        "state": "MI",
+        "placeId": "IB79B5083B5778866",
+        "league": "NFL",
+        "capacity": 65000
+    },
+    {
+        "id": "nfl-gillette",
+        "name": "Gillette Stadium",
+        "city": "Foxborough",
+        "state": "MA",
+        "placeId": "I8370D973FD04BD00",
+        "league": "NFL",
+        "capacity": 65878
+    },
+    {
+        "id": "nfl-hard-rock",
+        "name": "Hard Rock Stadium",
+        "city": "Miami Gardens",
+        "state": "FL",
+        "placeId": "I8425662DC652C4FE",
+        "league": "NFL",
+        "capacity": 64676
+    },
+    {
+        "id": "nfl-highmark",
+        "name": "Highmark Stadium",
+        "city": "Orchard Park",
+        "state": "NY",
+        "placeId": "I613AF672393A40BF",
+        "league": "NFL",
+        "capacity": 67000
+    },
+    {
+        "id": "nfl-huntington-bank",
+        "name": "Huntington Bank Field",
+        "city": "Cleveland",
+        "state": "OH",
+        "placeId": "I6B733A6130B9BC4A",
+        "league": "NFL",
+        "capacity": 67895
+    },
+    {
+        "id": "nfl-lambeau",
+        "name": "Lambeau Field",
+        "city": "Green Bay",
+        "state": "WI",
+        "placeId": "IAD5B5B3D69452DD9",
+        "league": "NFL",
+        "capacity": 81441
+    },
+    {
+        "id": "nfl-levis",
+        "name": "Levi's Stadium",
+        "city": "Santa Clara",
+        "state": "CA",
+        "placeId": "I2C4B9D3502F7FC9D",
+        "league": "NFL",
+        "capacity": 68500
+    },
+    {
+        "id": "nfl-lincoln-financial",
+        "name": "Lincoln Financial Field",
+        "city": "Philadelphia",
+        "state": "PA",
+        "placeId": "I773DE32059A03792",
+        "league": "NFL",
+        "capacity": 69176
+    },
+    {
+        "id": "nfl-lucas-oil",
+        "name": "Lucas Oil Stadium",
+        "city": "Indianapolis",
+        "state": "IN",
+        "placeId": "I74CAD5EFD79442C2",
+        "league": "NFL",
+        "capacity": 63000
+    },
+    {
+        "id": "nfl-lumen",
+        "name": "Lumen Field",
+        "city": "Seattle",
+        "state": "WA",
+        "placeId": "I536C878ADB55D8F7",
+        "league": "NFL",
+        "capacity": 69000
+    },
+    {
+        "id": "nfl-mt-bank",
+        "name": "M&T Bank Stadium",
+        "city": "Baltimore",
+        "state": "MD",
+        "placeId": "I61F425503752AADC",
+        "league": "NFL",
+        "capacity": 71008
+    },
+    {
+        "id": "nfl-mercedes-benz",
+        "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta",
+        "state": "GA",
+        "placeId": "IF7412E72C13976B5",
+        "league": "NFL",
+        "capacity": 71000
+    },
+    {
+        "id": "nfl-metlife",
+        "name": "MetLife Stadium",
+        "city": "East Rutherford",
+        "state": "NJ",
+        "placeId": "IDC8A2715FFD065A5",
+        "league": "NFL",
+        "capacity": 82500
+    },
+    {
+        "id": "nfl-nissan",
+        "name": "Nissan Stadium",
+        "city": "Nashville",
+        "state": "TN",
+        "placeId": "ID5A8177648152B54",
+        "league": "NFL",
+        "capacity": 69143
+    },
+    {
+        "id": "nfl-northwest",
+        "name": "Northwest Stadium",
+        "city": "Landover",
+        "state": "MD",
+        "placeId": "I158C32E6CE891432",
+        "league": "NFL",
+        "capacity": 62000
+    },
+    {
+        "id": "nfl-nrg",
+        "name": "NRG Stadium",
+        "city": "Houston",
+        "state": "TX",
+        "placeId": "IA3B540894FB226EC",
+        "league": "NFL",
+        "capacity": 71995
+    },
+    {
+        "id": "nfl-paycor",
+        "name": "Paycor Stadium",
+        "city": "Cincinnati",
+        "state": "OH",
+        "placeId": "I57E132703322EFC7",
+        "league": "NFL",
+        "capacity": 65515
+    },
+    {
+        "id": "nfl-raymond-james",
+        "name": "Raymond James Stadium",
+        "city": "Tampa",
+        "state": "FL",
+        "placeId": "I8857E0F979CD91F0",
+        "league": "NFL",
+        "capacity": 65618
+    },
+    {
+        "id": "nfl-sofi",
+        "name": "SoFi Stadium",
+        "city": "Inglewood",
+        "state": "CA",
+        "placeId": "I88BE978C7773F8C4",
+        "league": "NFL",
+        "capacity": 70240
+    },
+    {
+        "id": "nfl-soldier",
+        "name": "Soldier Field",
+        "city": "Chicago",
+        "state": "IL",
+        "placeId": "I388C2F0BC15DA3E6",
+        "league": "NFL",
+        "capacity": 61500
+    },
+    {
+        "id": "nfl-state-farm",
+        "name": "State Farm Stadium",
+        "city": "Glendale",
+        "state": "AZ",
+        "placeId": "I7EF26017AD6DE478",
+        "league": "NFL",
+        "capacity": 63400
+    },
+    {
+        "id": "nfl-us-bank",
+        "name": "U.S. Bank Stadium",
+        "city": "Minneapolis",
+        "state": "MN",
+        "placeId": "IC27370A190AB3222",
+        "league": "NFL",
+        "capacity": 66860
+    }
+]
