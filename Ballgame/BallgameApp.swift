@@ -56,29 +56,29 @@ private struct RootTabView: View {
                 }
                 .tag(Tab.logbook)
             
-            StadiumsView()
-                .tabItem {
-                    Label("Stadiums", systemImage: "building.columns")
-                }
-                .tag(Tab.stadiums)
-            
             Color.clear
                 .tabItem {
                     Label("Add", systemImage: "plus.circle.fill")
                 }
                 .tag(Tab.add)
             
-            FriendsView()
+            StadiumsView()
                 .tabItem {
-                    Label("Friends", systemImage: "person.2.fill")
+                    Label("Stadiums", systemImage: "building.columns")
                 }
-                .tag(Tab.friends)
-            
-            AccountView()
-                .tabItem {
-                    Label("Account", systemImage: "person.crop.circle")
-                }
-                .tag(Tab.account)
+                .tag(Tab.stadiums)
+//
+//            FriendsView()
+//                .tabItem {
+//                    Label("Friends", systemImage: "person.2.fill")
+//                }
+//                .tag(Tab.friends)
+//            
+//            AccountView()
+//                .tabItem {
+//                    Label("Account", systemImage: "person.crop.circle")
+//                }
+//                .tag(Tab.account)
         }
         // Presents the AddVisitView as a sheet
         .onChange(of: selection) { _, newSelection in
