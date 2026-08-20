@@ -92,9 +92,10 @@ struct StadiumDetailView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 50, height: 50)
+                                    .clipShape(
+                                        .rect(cornerRadius: 10)
+                                    )
                                     .padding(15)
-                                    .background(Color(.secondarySystemBackground))
-                                    .clipShape(Circle())
                                     .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 5)
                                 
                                 Text(team.teamName)
@@ -115,5 +116,5 @@ struct StadiumDetailView: View {
 }
 
 #Preview {
-    StadiumDetailView(stadium: DataManager.shared.stadiums.first!)
+    StadiumDetailView(stadium: DataManager.shared.stadiums.first(where: { $0.id == "nfl-sofi" })!)
 }

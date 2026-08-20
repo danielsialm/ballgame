@@ -48,10 +48,14 @@ struct VisitCard: View {
                     Image(logoName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .padding(.leading, 15)
-                        .padding(.trailing, 15)
+                        .frame(width: 70, height: 70)
+                        .clipShape(
+                            .rect(cornerRadius: 10)
+                        )
+                        .padding(.leading, 5)
+                        .padding(.trailing, 5)
                         .scaleEffect(x: isAway ? -1 : 1, y: 1)
+                    
                     Spacer()
                 }
             }
